@@ -1,0 +1,1490 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,400;1,700&family=Red+Hat+Display:wght@400;500;700;900&family=Outfit:wght@300;400;500;700&display=swap');
+
+.app-container {
+    min-height: 100vh;
+    background-color: #0A0A0A;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    overflow-x: clip;
+    /* clip allows sticky to work unlike hidden in some browsers */
+    position: relative;
+}
+
+.site-header {
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 100;
+    background-color: #0A0A0A;
+}
+
+.site-logo-text {
+    font-size: 30px;
+    font-weight: 500;
+    letter-spacing: -1px;
+}
+
+/* Hero Section */
+.hero-section {
+    min-height: calc(100vh - 100px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 0 40px;
+    background-color: #0A0A0A;
+}
+
+/* Hero Content */
+.hero-main-content {
+    text-align: center;
+    max-width: 1200px;
+    z-index: 2000;
+    margin-top: -91px;
+}
+
+.rating-badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    margin-bottom: 15px;
+}
+
+.brand-logo-small {
+    height: 35px;
+    margin-bottom: 6px;
+}
+
+.rating-visual {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.rating-num {
+    font-size: 24px;
+    font-weight: 700;
+    color: #fff;
+}
+
+.star-img {
+    height: 18px;
+    width: auto;
+}
+
+.agency-sub {
+    font-family: 'Red Hat Display', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 24px;
+    color: rgb(250, 250, 250);
+    text-transform: none;
+    letter-spacing: normal;
+}
+
+.hero-title {
+    font-family: 'Red Hat Display', sans-serif;
+    font-size: 72px;
+    /* Base size */
+    line-height: 86px;
+    font-weight: 700;
+    letter-spacing: -2px;
+    margin-bottom: 40px;
+    color: rgb(250, 250, 250);
+}
+
+.we-text,
+.red-hat-text {
+    font-family: 'Red Hat Display', sans-serif;
+    font-size: clamp(32px, 8vw, 72px);
+    line-height: 1.2;
+    font-weight: 700;
+    color: rgb(250, 250, 250);
+}
+
+.elegant-serif {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 8vw, 72px);
+    line-height: 1.2;
+    font-weight: 700;
+    font-style: italic;
+    color: rgb(250, 250, 250);
+}
+
+.title-icons {
+    height: clamp(30px, 6vw, 60px);
+    vertical-align: middle;
+    margin: 0 5px;
+}
+
+/* Country Chip */
+.country-chip-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.country-chip-img {
+    height: 38px;
+    width: auto;
+    border: 1px solid #00623e;
+    /* Dark green border */
+    border-radius: 100px;
+    padding: 6px 15px;
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.cta-wrapper {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+/* Button */
+.purple-btn {
+    font-family: 'Outfit', sans-serif;
+    width: 174px;
+    height: 54px;
+    background: #6433CC;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 700;
+    border-radius: 8px;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 10;
+    overflow: hidden;
+
+    /* Permanent top-right sharp border highlight */
+    box-shadow:
+        0 8px 25px rgba(100, 51, 204, 0.4),
+        inset -1.2px 1.2px 0px rgba(255, 255, 255, 0.8);
+    /* Fixed corner light */
+}
+
+/* Rotating Border Beam */
+.purple-btn::before {
+    content: '';
+    position: absolute;
+    inset: -200%;
+    background: conic-gradient(from 0deg,
+            transparent 0%,
+            transparent 80%,
+            rgba(255, 255, 255, 0.6) 90%,
+            rgba(255, 255, 255, 0.6) 100%);
+    animation: rotate-border 4s linear infinite;
+    z-index: -2;
+}
+
+/* Inner Body - Fused with the edge highlights */
+.purple-btn::after {
+    content: '';
+    position: absolute;
+    inset: 1.2px;
+    /* Perfectly aligned with the highlight thickness */
+    background:
+        radial-gradient(circle at 85% 15%, rgba(255, 255, 255, 0.15) 0%, transparent 40%),
+        linear-gradient(180deg, #7A4BFF 0%, #6433CC 100%);
+    border-radius: 8px;
+    z-index: -1;
+}
+
+@keyframes rotate-border {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.btn-chat-icon {
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Floating 3D Elements */
+.floating-elements-container {
+    position: absolute;
+    top: 45%;
+    right: 0;
+    transform: translateY(-50%);
+    width: 450px;
+    height: 500px;
+    pointer-events: none;
+    z-index: 1000;
+    overflow: visible;
+}
+
+.floating-elements-container.left {
+    left: 0;
+    right: auto;
+    z-index: 1001;
+    margin-top: -60px;
+}
+
+.floating-mockup,
+.floating-mockup-left {
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0 20px 50px rgba(0, 0, 0, 0.5));
+}
+
+.floating-mockup-left {
+    width: 80%;
+    margin-left: 0px;
+    margin-bottom: 71px;
+    position: relative;
+    z-index: 20;
+}
+
+.floating3d {
+    position: absolute;
+    pointer-events: none;
+}
+
+.cube-3d {
+    width: 120px;
+    top: 50px;
+    /* Pin to the left edge of the screen */
+    left: 0px;
+}
+
+.ai-3d {
+    width: 120px;
+    top: 380px;
+    bottom: -65px;
+    left: 150px;
+
+}
+
+.ring-3d {
+    width: 75px;
+    /* Slightly increased size */
+    top: 20px;
+    right: -10px;
+    /* Pinned to the very edge */
+    z-index: 6;
+}
+
+.cursor-3d {
+    width: 80px;
+    top: 45%;
+    left: 170px;
+    z-index: 10;
+    filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.4));
+}
+
+/* Background Glow Image */
+.background-glow-img {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100vw;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.8;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 1200px) {
+    .floating-elements-container {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .site-header {
+        height: 70px;
+    }
+
+    .hero-section {
+        padding: 0 20px;
+        min-height: calc(100vh - 70px);
+    }
+
+    .hero-main-content {
+        margin-top: -20px;
+    }
+
+    .agency-sub {
+        font-size: 16px;
+    }
+
+    .brand-logo-small {
+        height: 28px;
+    }
+
+    .rating-num {
+        font-size: 20px;
+    }
+
+    .country-chip-img {
+        height: 30px;
+        padding: 4px 12px;
+    }
+
+    .purple-btn {
+        width: 160px;
+        height: 52px;
+        font-size: 16px;
+    }
+}
+
+/* Trusted By Section */
+.trusted-by-section {
+    width: 100%;
+    position: relative;
+    z-index: 10;
+    margin-top: -170px;
+    padding: 148px 0 132px;
+    overflow: hidden;
+    background: #0A0A0A;
+}
+
+.marquee-container {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.marquee-content {
+    display: flex;
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+    mask-image: linear-gradient(to right, transparent, black 20%, black 80%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 20%, black 80%, transparent);
+}
+
+.marquee-track {
+    display: flex;
+    gap: 50px;
+    padding-right: 50px;
+    align-items: center;
+}
+
+/* Left Scrolling Animation */
+.marquee-track.left {
+    animation: scroll-left 30s linear infinite;
+}
+
+/* Right Scrolling Animation */
+.marquee-track.right {
+    animation: scroll-right 30s linear infinite;
+}
+
+@keyframes scroll-left {
+    0% {
+        transform: translateX(0%);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+@keyframes scroll-right {
+    0% {
+        transform: translateX(-50%);
+    }
+
+    100% {
+        transform: translateX(0%);
+    }
+}
+
+/* Brand Logos (Text styling since there are no images) */
+.brand-logo {
+    font-size: 24px;
+    color: rgba(255, 255, 255, 0.7);
+    font-family: 'Outfit', sans-serif;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: color 0.3s;
+}
+
+.brand-logo:hover {
+    color: #fff;
+}
+
+.brand-logo .symbol {
+    font-size: 28px;
+    color: #fff;
+}
+
+.brand-logo.font-bold {
+    font-weight: 800;
+}
+
+.brand-logo.italic {
+    font-style: italic;
+}
+
+.brand-logo.font-script {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 28px;
+}
+
+.brand-logo.font-serif {
+    font-family: 'Playfair Display', serif;
+    font-weight: bold;
+}
+
+.brand-logo.font-wide {
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-size: 18px;
+}
+
+/* Proven Success Section */
+.proven-success-section {
+    background-color: #ffffff;
+    width: 100%;
+    margin-top: -60px;
+    border-radius: 30px 30px 0 0;
+    padding: 100px 40px 71px;
+    color: #1a1a1a;
+    position: relative;
+    z-index: 20;
+    /* Fixed edge bleed */
+    box-shadow: none;
+}
+
+.success-content {
+    max-width: 1251px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.industry-wins-badge {
+    display: inline-block;
+    border: 1.5px solid #00df82;
+    color: #00df82;
+    padding: 6px 20px;
+    border-radius: 100px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    margin-bottom: 24px;
+}
+
+.success-title {
+    font-family: 'Red Hat Display', sans-serif;
+    font-size: 48px;
+    line-height: 58px;
+    font-weight: 700;
+    color: #1a1a1a;
+    letter-spacing: -2px;
+    margin: 0;
+}
+
+.elegant-serif.dark {
+    font-family: 'Playfair Display', serif;
+    font-size: 48px;
+    line-height: 58px;
+    font-style: italic;
+    font-weight: 700;
+    color: #212121;
+}
+
+/* Mobile responsive for new section */
+@media (max-width: 768px) {
+    .proven-success-section {
+        width: 100%;
+        border-radius: 20px 20px 0 0;
+        padding: 40px 20px;
+    }
+
+    .success-title,
+    .elegant-serif.dark {
+        font-size: 32px;
+        line-height: 1.2;
+    }
+
+    .industry-wins-badge {
+        padding: 4px 16px;
+        font-size: 14px;
+        margin-bottom: 16px;
+    }
+}
+
+/* Projects Grid and Cards */
+.projects-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    margin-top: 60px;
+}
+
+.project-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 16px;
+    overflow: hidden;
+    padding: 10px 10px 10px 40px;
+    height: 450px;
+    width: 100%;
+    max-width: 1251px;
+    gap: 40px;
+    position: sticky;
+    top: 50px;
+    margin: 0 auto 50px;
+    cursor: pointer;
+    box-sizing: border-box;
+    transition: transform 0.3s ease;
+    align-items: stretch;
+    /* Key for equal height columns */
+}
+
+/* Specific stacking with increasing gap for visibility */
+.project-card:nth-child(1) {
+    top: 50px;
+    z-index: 1;
+}
+
+.project-card:nth-child(2) {
+    top: 80px;
+    z-index: 2;
+}
+
+.project-card:nth-child(3) {
+    top: 110px;
+    z-index: 3;
+}
+
+.project-card:nth-child(4) {
+    top: 140px;
+    z-index: 4;
+}
+
+.project-card:nth-child(5) {
+    top: 170px;
+    z-index: 5;
+}
+
+.project-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* Center text vertically within the stretch */
+    z-index: 2;
+}
+
+.project-category {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 24px;
+    color: rgb(10, 10, 10);
+    margin-bottom: 16px;
+}
+
+.project-title {
+    font-family: 'Red Hat Display', sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 38px;
+    color: rgb(10, 10, 10);
+    margin-bottom: 20px;
+}
+
+.project-desc {
+    font-family: 'Outfit', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    color: rgb(82, 82, 82);
+    margin-bottom: 30px;
+}
+
+.project-stats {
+    display: flex;
+    gap: 60px;
+    margin-bottom: 40px;
+}
+
+.stat-label {
+    font-family: 'Outfit', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    color: rgb(82, 82, 82);
+    margin-bottom: 8px;
+}
+
+.stat-value {
+    font-family: 'Red Hat Display', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 29px;
+    color: rgb(10, 10, 10);
+}
+
+.ceo-badge {
+    display: flex;
+    align-items: center;
+    background-color: #9AABFF;
+    padding: 8px 16px;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 470px;
+    gap: 16px;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+.ceo-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.ceo-details {
+    flex: 1;
+}
+
+.ceo-details p {
+    margin: 0;
+}
+
+.ceo-name {
+    font-family: 'Outfit', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+    color: rgb(10, 10, 10);
+}
+
+.ceo-role {
+    font-family: 'Outfit', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    color: rgb(82, 82, 82);
+}
+
+.ceo-arrow-icon {
+    width: 24px;
+    height: auto;
+}
+
+.project-visual {
+    flex: 1.2;
+    display: flex;
+    justify-content: stretch;
+    align-items: stretch;
+    margin: -7px -7px -7px 0;
+    /* Adjusting to make image gap exactly 13px (20 - 7 = 13) */
+}
+
+.visual-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: visible;
+    /* Allowing image to breathe if needed */
+}
+
+.card-mockup-img {
+    width: 100%;
+    height: 100%;
+    max-width: 600px;
+    /* Slightly larger to fill space */
+    object-fit: contain;
+    display: block;
+    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Mobile Responsive Adjustments */
+@media (max-width: 1024px) {
+    .project-card {
+        flex-direction: column;
+        padding: 30px 24px;
+        height: auto;
+        min-height: 450px;
+        /* Ensure a minimum height for the card */
+        text-align: left;
+        position: sticky;
+        border-radius: 20px;
+    }
+
+    /* Mobile specific offsets to ensure they overlap visibly */
+    .project-card:nth-child(1) {
+        top: 60px;
+    }
+
+    .project-card:nth-child(2) {
+        top: 90px;
+    }
+
+    .project-card:nth-child(3) {
+        top: 120px;
+    }
+
+    .project-card:nth-child(4) {
+        top: 150px;
+    }
+
+    .project-card:nth-child(5) {
+        top: 180px;
+    }
+
+    .project-info {
+        max-width: 100%;
+        order: 1;
+        margin-bottom: 20px;
+    }
+
+    .project-visual {
+        order: 2;
+        margin-top: 30px;
+    }
+
+    .project-stats {
+        gap: 30px;
+    }
+
+    .project-title {
+        font-size: 28px;
+    }
+}
+
+@media (max-width: 640px) {
+    .project-card {
+        padding: 30px 20px;
+    }
+
+    .project-title {
+        font-size: 24px;
+    }
+
+    .project-stats {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .ceo-badge {
+        flex-wrap: wrap;
+        border-radius: 20px;
+        padding: 10px 15px;
+    }
+}
+
+/* See All Projects Button */
+.see-all-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+    width: 100%;
+}
+
+.see-all-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: #7D40FF;
+    color: #FFFFFF;
+    width: 207px;
+    height: 56px;
+    border-radius: 8px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 20px;
+    border: none;
+    cursor: default;
+    box-shadow: none;
+    text-transform: none;
+    position: relative;
+    overflow: hidden;
+}
+
+.see-all-btn::after {
+    content: '';
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    width: 60px;
+    height: 60px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.see-all-arrow-icon {
+    width: 18px;
+    height: 18px;
+    filter: brightness(0) invert(1);
+    /* Ensure the arrow is white */
+}
+
+@media (max-width: 768px) {
+    .see-all-container {
+        margin-top: 20px;
+    }
+}
+
+/* Floating Bottom Nav Background Blur */
+.nav-blur-bg {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+    height: 150px;
+    /* Tall enough to cover nav bar comfortably */
+    background: transparent;
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    z-index: 1500;
+    pointer-events: none;
+    /* Mask out the top edge to create a soft, invisible transition */
+    -webkit-mask-image: linear-gradient(to top, black 60%, transparent 100%);
+    mask-image: linear-gradient(to top, black 60%, transparent 100%);
+}
+
+/* Floating Bottom Nav */
+.floating-nav {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2000;
+    pointer-events: auto;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    background: #0A0A0A;
+    border: 1px solid rgba(0, 223, 130, 0.2);
+    /* Subtle green border */
+    padding: 8px 12px;
+    border-radius: 16px;
+    height: 72px;
+    width: 100%;
+    max-width: 713px;
+    box-sizing: border-box;
+    box-shadow:
+        0 4px 20px rgba(0, 0, 0, 0.8),
+        inset 0 3px 5px -2px rgba(0, 223, 130, 0.8);
+    /* Concentrated top light with less side bleed */
+    position: relative;
+}
+
+/* Bottom Purple Glow under the button */
+.nav-inner::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 180px;
+    height: 40px;
+    background: radial-gradient(circle, rgba(100, 51, 204, 0.4) 0%, transparent 70%);
+    filter: blur(10px);
+    pointer-events: none;
+    z-index: -1;
+}
+
+.nav-link {
+    font-family: 'Outfit', sans-serif;
+    color: #FFFFFF;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    padding: 0 15px;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #A87FFF;
+}
+
+.nav-cta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: #000000;
+    /* Black button to blend with bar */
+    color: #FFFFFF;
+    /* White text */
+    height: 52px;
+    padding: 0 28px;
+    border-radius: 10px;
+    font-family: 'Red Hat Display', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    position: relative;
+    z-index: 10;
+    overflow: hidden;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+/* Base White Border for CTA */
+.nav-cta::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    padding: 1px;
+    /* Thinner border per image */
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.2);
+    /* Subtle white border */
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    z-index: 2;
+}
+
+/* Rotating Purple Beam on CTA (Animation Removed) */
+.nav-cta::after {
+    content: '';
+    position: absolute;
+    inset: -150%;
+    background: conic-gradient(from 0deg,
+            transparent 0%,
+            transparent 80%,
+            #6433CC 90%,
+            #6433CC 100%);
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* Update the icon color back to white for the dark background */
+.nav-cta svg path[stroke="#7D40FF"] {
+    stroke: #7D40FF;
+    /* Keeping a slight purple tint in the smile or use #FFF */
+}
+
+.nav-cta svg path[fill="white"] {
+    fill: #FFFFFF;
+}
+
+@media (max-width: 1024px) {
+    .floating-nav {
+        width: 95%;
+    }
+
+    .nav-inner {
+        max-width: 600px;
+        height: 64px;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-link {
+        display: none;
+    }
+
+    .nav-inner {
+        width: auto;
+        padding: 8px;
+    }
+}
+
+/* Client Stories Section */
+.client-stories-section {
+    background-color: #ffffff;
+    width: 100%;
+    padding: 80px 0 150px;
+    /* Zero horizontal padding to flush with screen */
+    color: #0a0a0a;
+    position: relative;
+    z-index: 20;
+}
+
+.client-stories-content {
+    max-width: 1251px;
+    margin: 0 auto;
+    text-align: left;
+    padding: 0 40px;
+    /* Keep title and badge aligned with other sections */
+}
+
+.client-stories-badge {
+    display: inline-block;
+    border: 1.5px solid #00df82;
+    color: #00df82;
+    padding: 6px 20px;
+    border-radius: 100px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    margin-bottom: 24px;
+}
+
+.client-stories-title {
+    font-family: 'Red Hat Display', sans-serif;
+    font-size: 48px;
+    line-height: 58px;
+    font-weight: 700;
+    color: #0a0a0a;
+    letter-spacing: -2px;
+    margin: 0;
+}
+
+@media (max-width: 768px) {
+    .client-stories-section {
+        padding: 60px 20px 140px;
+    }
+
+    .client-stories-title {
+        font-size: 32px;
+        line-height: 1.2;
+    }
+}
+
+/* Client Carousel Styles */
+.client-carousel-container {
+    width: 100%;
+    margin: 60px 0 0;
+    padding: 0;
+    overflow: hidden;
+    position: relative;
+    box-sizing: border-box;
+}
+
+.client-carousel-track {
+    display: flex;
+    width: fit-content;
+    margin-left: -35px;
+    /* Exactly match the 15.5px card padding */
+}
+
+
+.client-card {
+    /* Each card is exactly 1/4th of the container's width (25vw) */
+    width: 25vw;
+    height: 704px;
+    /* From image spec: ~704px */
+    flex-shrink: 0;
+    padding: 0 15.5px;
+    /* 15.5px on each side = 31px total gap */
+    box-sizing: border-box;
+    border-radius: 24px;
+    /* From image spec: 24px */
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+}
+
+
+.client-card-inner {
+    width: 100%;
+    height: 100%;
+    border-radius: 24px;
+    overflow: hidden;
+    position: relative;
+    background: #111111;
+    color: #FFFFFF;
+}
+
+.client-video-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.client-video-iframe {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    /* Large width to ensure height covers when scaled */
+    height: 100%;
+    transform: translate(-50%, -50%) scale(2.5);
+    object-fit: cover;
+}
+
+
+@media (max-width: 1024px) {
+    .client-card {
+        width: calc((100% - 15px) / 2);
+        /* 2 cards on tablet */
+    }
+}
+
+@media (max-width: 600px) {
+    .client-card {
+        width: 100%;
+        /* 1 card on mobile */
+    }
+}
+
+
+
+
+.client-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.client-card:hover .client-image {
+    transform: scale(1.05);
+}
+
+.client-play-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 5;
+    opacity: 0.8;
+    transition: opacity 0.3s ease, scale 0.3s ease;
+}
+
+.client-card:hover .client-play-btn {
+    opacity: 1;
+    scale: 1.1;
+}
+
+.client-card-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 30px;
+    background: linear-gradient(to top, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.4) 60%, transparent 100%);
+    color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    z-index: 2;
+}
+
+.client-brand {
+    font-size: 14px;
+    /* From image spec: 14px */
+    line-height: 20px;
+    /* From image spec: 20px */
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.brand-dot {
+    color: #00df82;
+    font-size: 12px;
+}
+
+.client-testimonial {
+    font-size: 14px;
+    /* From image spec: 14px */
+    line-height: 20px;
+    /* From image spec: 20px */
+    margin-bottom: 20px;
+    color: rgba(255, 255, 255, 0.9);
+    font-family: 'Outfit', sans-serif;
+}
+
+.client-name {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 4px;
+    color: #FFFFFF;
+}
+
+.client-role {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.6);
+    font-family: 'Outfit', sans-serif;
+}
+
+@media (max-width: 768px) {
+    .client-card {
+        width: 300px;
+        height: 420px;
+    }
+
+    .client-testimonial {
+        font-size: 14px;
+    }
+
+    .client-name {
+        font-size: 18px;
+    }
+}
+
+/* What We Do Section */
+.what-we-do-section {
+    background-color: #010101;
+    width: 100%;
+    padding: 120px 40px;
+    border-radius: 40px 40px 0 0;
+    margin-top: -40px;
+    position: relative;
+    z-index: 25;
+}
+
+.wwd-content {
+    max-width: 1251px;
+    margin: 0 auto;
+}
+
+.wwd-badge {
+    display: inline-block;
+    border: 1px solid #00df82;
+    color: #00df82;
+    padding: 6px 18px;
+    border-radius: 100px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    margin-bottom: 30px;
+}
+
+.wwd-title {
+    font-family: 'Red Hat Display', sans-serif;
+    font-size: 48px;
+    /* From image spec: 48px */
+    line-height: 58px;
+    /* From image spec: 58px */
+    font-weight: 700;
+    /* Weight 700 */
+    color: rgb(255, 255, 255);
+    /* Color from spec */
+    letter-spacing: -1px;
+}
+
+.wwd-title .elegant-serif {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-weight: 700;
+    /* Weight 700 italic */
+    font-size: 48px;
+    line-height: 58px;
+    color: rgb(255, 255, 255);
+}
+
+
+@media (max-width: 768px) {
+    .wwd-title {
+        font-size: 36px;
+    }
+
+    .what-we-do-section {
+        padding: 80px 20px;
+    }
+}
+
+/* Services Rows */
+.wwd-services-container {
+    max-width: 1251px;
+    margin: 80px auto 0;
+    display: flex;
+    flex-direction: column;
+    gap: 120px;
+}
+
+.wwd-service-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    position: relative;
+    gap: 40px;
+}
+
+.wwd-text-col {
+    position: sticky;
+    top: 150px;
+    flex: 0 0 350px;
+    padding-top: 20px;
+}
+
+.service-title {
+    font-family: 'Red Hat Display', sans-serif;
+    font-size: 40px;
+    line-height: 48px;
+    font-weight: 700;
+    color: rgb(250, 250, 250);
+    margin-bottom: 20px;
+    /* Reduced to fit divider nicely */
+}
+
+.service-divider {
+    width: 90%;
+    /* Reduced width */
+    height: 1px;
+    background: linear-gradient(to right, #6332C6 0%, rgba(99, 50, 198, 0) 100%);
+    /* Full color to low opacity */
+    margin-bottom: 24px;
+}
+
+
+
+.service-title .elegant-serif {
+    font-family: 'Playfair Display', serif;
+    font-size: 40px;
+    /* From image spec: 40px */
+    line-height: 48px;
+    /* From image spec: 48px */
+    font-weight: 700;
+    font-style: italic;
+}
+
+
+.service-desc {
+    font-family: 'Outfit', sans-serif;
+    /* From image spec */
+    font-size: 16px;
+    /* From image spec: 16px */
+    line-height: 24px;
+    /* From image spec: 24px */
+    font-weight: 400;
+    /* From image spec: 400 */
+    color: rgb(212, 212, 212);
+    /* Color from spec: rgb(212, 212, 212) */
+    margin-bottom: 32px;
+    max-width: 330px;
+}
+
+
+.service-link {
+    font-family: 'Outfit', sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    color: rgb(125, 64, 255);
+    /* Color from spec: rgb(125, 64, 255) */
+    text-decoration: none;
+    font-weight: 700;
+    /* From image spec: 700 */
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+}
+
+
+.service-link:hover {
+    gap: 12px;
+}
+
+.wwd-images-col {
+    display: flex;
+    gap: 30px;
+    flex: 1;
+    justify-content: flex-end;
+}
+
+.service-image-card {
+    border-radius: 32px;
+    overflow: hidden;
+    position: relative;
+    background: transparent;
+}
+
+.service-image-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.main-img {
+    width: 395px;
+    /* From image spec: ~395px */
+    height: 555px;
+    /* From image spec: ~555px */
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.side-img {
+    width: 395px;
+    /* Making both identical as per latest spec */
+    height: 555px;
+    margin-top: 120px;
+    /* Keeping the visual offset */
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+@media (max-width: 1024px) {
+    .wwd-service-row {
+        flex-direction: column;
+    }
+
+    .wwd-text-col {
+        position: relative;
+        top: 0;
+        flex: 1;
+        margin-bottom: 40px;
+    }
+
+    .wwd-images-col {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .wwd-images-col {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .side-img {
+        margin-top: 0;
+    }
+
+    .main-img,
+    .side-img {
+        width: 100%;
+        max-width: 400px;
+        height: auto;
+    }
+}
