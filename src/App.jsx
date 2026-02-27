@@ -41,6 +41,16 @@ import wwd4_1 from '../img/we do/4.1.avif';
 import wwd4_2 from '../img/we do/4.2.avif';
 import footerImg from '../img/foo.avif';
 
+// AI-Powered Design Section Images
+import aiCenterLogo from '../img/AI-Powered Design/68b61fd952b78aa1c579683c_Frame 2147224744.svg';
+import aiImg1 from '../img/AI-Powered Design/68c0f8e5e4eed26b3df33dbf_Frame 427321588 (10) (1).avif';
+import aiImg2 from '../img/AI-Powered Design/68c0fd1543795606db43fc7a_b0912675069a2f6948f5db3e54c11327_Frame 2147226580 (1).avif';
+import aiImg3 from '../img/AI-Powered Design/68c0fd7c6c69d5e8b586e825_Frame 2147226653 (2) (1).avif';
+import aiImg4 from '../img/AI-Powered Design/68c0fdca701e60e4fb26c2fa_Frame 427321588 (11) (1).avif';
+import aiImg5 from '../img/AI-Powered Design/68c0fe116b9d3d649da7d5ef_Frame 427321588 (13) (1).avif';
+import aiImg6 from '../img/AI-Powered Design/68c0feeeeec420934eb6dc33_f5af64da87fb7c474458934d16bc50fe_Frame 2147226581 (1).avif';
+
+
 function App() {
     const services = [
         {
@@ -460,6 +470,7 @@ function App() {
                 </div>
             </section>
 
+
             {/* Client Stories Section */}
             <section className="client-stories-section">
                 <div className="client-stories-content">
@@ -533,6 +544,146 @@ function App() {
                             </div>
                         ))}
                     </motion.div>
+                </div>
+            </section>
+
+            {/* Impact Section */}
+            <section className="impact-section">
+                <div className="impact-container">
+                    <span className="impact-badge">AI-Powered Design</span>
+                    <h2 className="impact-title">
+                        Smarter Design, <span className="elegant-serif">Supercharged By AI</span>
+                    </h2>
+                    <p className="impact-subtitle">
+                        From wireframes to launch, we blend AI tools with strategy to deliver faster, <br />
+                        sharper, and data-led design results.
+                    </p>
+
+                    <div className="ai-features-grid">
+                        <svg className="connecting-lines-svg" viewBox="0 0 1000 600" fill="none" preserveAspectRatio="none">
+                            <defs>
+                                <radialGradient id="dot-glow" cx="50%" cy="50%" r="50%">
+                                    <stop offset="0%" stopColor="#b085ff" stopOpacity="1" />
+                                    <stop offset="100%" stopColor="#7D40FF" stopOpacity="0.3" />
+                                </radialGradient>
+
+                            </defs>
+
+
+
+                            {/* ── TOP MIDDLE: card → center ── */}
+                            <path id="p-top-mid" d="M500 212 V300" stroke="rgba(125,64,255,0.4)" strokeWidth="1.5" />
+                            <circle r="2" fill="#a67fff">
+                                <animateMotion dur="2.3s" repeatCount="indefinite" begin="0s" rotate="none">
+                                    <mpath href="#p-top-mid" />
+                                </animateMotion>
+                            </circle>
+
+                            {/* ── BOTTOM MIDDLE: card → center ── */}
+                            <path id="p-bot-mid" d="M500 388 V300" stroke="rgba(125,64,255,0.4)" strokeWidth="1.5" />
+                            <circle r="2" fill="#a67fff">
+                                <animateMotion dur="3.7s" repeatCount="indefinite" begin="1.8s" rotate="none">
+                                    <mpath href="#p-bot-mid" />
+                                </animateMotion>
+                            </circle>
+
+                            {/* ── LEFT TOP: card → center ── */}
+                            <path id="p-left-top" d="M160 212 V260 Q160 275, 185 275 H380 C410 275, 420 300, 440 300 H460" stroke="rgba(125,64,255,0.4)" strokeWidth="1.5" fill="none" />
+                            <circle r="2" fill="#a67fff">
+                                <animateMotion dur="2.9s" repeatCount="indefinite" begin="0.7s" rotate="none">
+                                    <mpath href="#p-left-top" />
+                                </animateMotion>
+                            </circle>
+
+                            {/* ── LEFT BOTTOM: card → center ── */}
+                            <path id="p-left-bot" d="M160 388 V340 Q160 325, 185 325 H380 C410 325, 420 300, 440 300 H460" stroke="rgba(125,64,255,0.4)" strokeWidth="1.5" fill="none" />
+                            <circle r="2" fill="#a67fff">
+                                <animateMotion dur="4.1s" repeatCount="indefinite" begin="2.9s" rotate="none">
+                                    <mpath href="#p-left-bot" />
+                                </animateMotion>
+                            </circle>
+
+                            {/* ── RIGHT TOP: card → center ── */}
+                            <path id="p-right-top" d="M840 212 V260 Q840 275, 815 275 H620 C590 275, 580 300, 560 300 H540" stroke="rgba(125,64,255,0.4)" strokeWidth="1.5" fill="none" />
+                            <circle r="2" fill="#a67fff">
+                                <animateMotion dur="3.3s" repeatCount="indefinite" begin="1.4s" rotate="none">
+                                    <mpath href="#p-right-top" />
+                                </animateMotion>
+                            </circle>
+
+                            {/* ── RIGHT BOTTOM: card → center ── */}
+                            <path id="p-right-bot" d="M840 388 V340 Q840 325, 815 325 H620 C590 325, 580 300, 560 300 H540" stroke="rgba(125,64,255,0.4)" strokeWidth="1.5" fill="none" />
+                            <circle r="2" fill="#a67fff">
+                                <animateMotion dur="2.6s" repeatCount="indefinite" begin="3.5s" rotate="none">
+                                    <mpath href="#p-right-bot" />
+                                </animateMotion>
+                            </circle>
+                        </svg>
+                        <div className="ai-center-logo-wrapper">
+                            <div className="center-glow"></div>
+                            <img src={aiCenterLogo} alt="AI Logo" className="ai-center-logo" />
+                        </div>
+
+                        <div className="ai-card top-left">
+                            <div className="ai-card-content">
+                                <h3>UX Copy <span className="elegant-serif">That Clicks</span></h3>
+                                <p>We use AI to create effective copies like CTAs and microcopy that speaks.</p>
+                            </div>
+                            <div className="ai-card-visual">
+                                <img src={aiImg1} alt="UX Copy AI" />
+                            </div>
+                        </div>
+
+                        <div className="ai-card top-center">
+                            <div className="ai-card-content">
+                                <h3>Visuals, <span className="elegant-serif">Instantly On Point</span></h3>
+                                <p>We generate custom visuals using AI for faster concept directions, brand-ready.</p>
+                            </div>
+                            <div className="ai-card-visual">
+                                <img src={aiImg2} alt="Visuals AI" />
+                            </div>
+                        </div>
+
+                        <div className="ai-card top-right">
+                            <div className="ai-card-content">
+                                <h3>Data-Led <span className="elegant-serif">Design Decisions</span></h3>
+                                <p>We predict user behavior before launch with AI-powered heatmaps that help us.</p>
+                            </div>
+                            <div className="ai-card-visual">
+                                <img src={aiImg3} alt="Data AI" />
+                            </div>
+                        </div>
+
+                        <div className="ai-card bottom-left">
+                            <div className="ai-card-content">
+                                <h3>Smarter & <span className="elegant-serif">Faster Wireframes</span></h3>
+                                <p>We rapidly turn ideas into functional wireframes using AI tools, with less.</p>
+                            </div>
+                            <div className="ai-card-visual">
+                                <img src={aiImg4} alt="Wireframes AI" />
+                            </div>
+                        </div>
+
+                        <div className="ai-card bottom-center">
+                            <div className="ai-card-content">
+                                <h3>Launch Quicker, <span className="elegant-serif">Spend Less</span></h3>
+                                <p>AI reduces revisions and guesswork and makes your website ready to launch.</p>
+                            </div>
+                            <div className="ai-card-visual">
+                                <img src={aiImg5} alt="Launch AI" />
+                            </div>
+                        </div>
+
+                        <div className="ai-card bottom-right">
+                            <div className="ai-card-content">
+                                <h3>No Blank <span className="elegant-serif">Canvas Struggles</span></h3>
+                                <p>AI generates editable mockups from prompts so we can skip the slow start.</p>
+                            </div>
+                            <div className="ai-card-visual">
+                                <img src={aiImg6} alt="Mockups AI" />
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </section>
 
@@ -672,23 +823,25 @@ function App() {
                 </div>
             </nav>
             {/* Back to Top Button */}
-            {showBackToTop && (
-                <motion.button
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: 20 }}
-                    onClick={scrollToTop}
-                    className="back-to-top-btn"
-                >
-                    <span className="btt-icon">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <circle cx="12" cy="12" r="10" fill="white" />
-                            <path d="M12 16V8M12 8L8 12M12 8L16 12" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                        </svg>
-                    </span>
-                    Back to Top
-                </motion.button>
-            )}
+            {
+                showBackToTop && (
+                    <motion.button
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: 20 }}
+                        onClick={scrollToTop}
+                        className="back-to-top-btn"
+                    >
+                        <span className="btt-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="12" cy="12" r="10" fill="white" />
+                                <path d="M12 16V8M12 8L8 12M12 8L16 12" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                            </svg>
+                        </span>
+                        Back to Top
+                    </motion.button>
+                )
+            }
         </div>
     );
 }
