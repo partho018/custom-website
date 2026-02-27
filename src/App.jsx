@@ -49,6 +49,11 @@ import aiImg3 from '../img/AI-Powered Design/68c0fd7c6c69d5e8b586e825_Frame 2147
 import aiImg4 from '../img/AI-Powered Design/68c0fdca701e60e4fb26c2fa_Frame 427321588 (11) (1).avif';
 import aiImg5 from '../img/AI-Powered Design/68c0fe116b9d3d649da7d5ef_Frame 427321588 (13) (1).avif';
 import aiImg6 from '../img/AI-Powered Design/68c0feeeeec420934eb6dc33_f5af64da87fb7c474458934d16bc50fe_Frame 2147226581 (1).avif';
+import infinityIcon from '../img/Why Choose Us/67bbf4557f15dfc01f0bbe24_Infinity.avif';
+import profileIcon from '../img/Why Choose Us/67bbf455cd6e05ec201e5e82_Profile-p-500.avif';
+import dollarIcon from '../img/Why Choose Us/67bbf455bde8347a515f5d6c_Dollar.avif';
+import diagramIcon from '../img/Why Choose Us/67bbf455657afc36ca73f802_diagram-p-500.avif';
+import starIcon from '../img/Why Choose Us/67bbf455f7d2b364987895ff_star-p-500.avif';
 
 
 function App() {
@@ -728,7 +733,76 @@ function App() {
                 </div>
             </section>
 
+            {/* Why Choose Us Section */}
+            <section className="why-choose-us-section">
+                <div className="why-choose-us-container">
+                    <span className="why-choose-us-badge">Why Choose Us</span>
+                    <h2 className="why-choose-us-title">
+                        We <span className="elegant-serif dark">Design</span> for the <span className="elegant-serif dark">Future</span> to <br />
+                        Drive Today's <span className="elegant-serif dark">Success</span>
+                    </h2>
+
+                    <div className="why-choose-us-grid">
+                        <div className="wcu-card">
+                            <div className="wcu-icon-wrapper">
+                                <img src={infinityIcon} alt="Unlimited Revisions" />
+                            </div>
+                            <h3 className="wcu-card-title">Unlimited Revisions</h3>
+                            <p className="wcu-card-desc">
+                                We're committed to your satisfaction with unlimited revisions at every step.
+                                Our mission is to make your vision come to life exactly as you imagine.
+                            </p>
+                        </div>
+
+                        <div className="wcu-card">
+                            <div className="wcu-icon-wrapper">
+                                <img src={profileIcon} alt="Lifetime Support" />
+                            </div>
+                            <h3 className="wcu-card-title">Lifetime Support</h3>
+                            <p className="wcu-card-desc">
+                                With our lifetime support, you're never alone. We'll be there for you at every
+                                stage with necessary guidance and assistance whenever you need it.
+                            </p>
+                        </div>
+
+                        <div className="wcu-card">
+                            <div className="wcu-icon-wrapper">
+                                <img src={dollarIcon} alt="Personalised Plans" />
+                            </div>
+                            <h3 className="wcu-card-title">Personalised Plans</h3>
+                            <p className="wcu-card-desc">
+                                Get top-quality service without breaking the bank. Our rates are
+                                designed to fit your budget so that you can get the best value for your investment.
+                            </p>
+                        </div>
+
+                        <div className="wcu-card">
+                            <div className="wcu-icon-wrapper">
+                                <img src={diagramIcon} alt="Custom Design Solutions" />
+                            </div>
+                            <h3 className="wcu-card-title">Custom Design Solutions</h3>
+                            <p className="wcu-card-desc">
+                                Our easy payment options are completely flexible. So, you can invest
+                                in your success while staying within your budget.
+                            </p>
+                        </div>
+
+                        <div className="wcu-card">
+                            <div className="wcu-icon-wrapper">
+                                <img src={starIcon} alt="24/7 Customer Support" />
+                            </div>
+                            <h3 className="wcu-card-title">24/7 Customer Support</h3>
+                            <p className="wcu-card-desc">
+                                Benefit from the expertise of our carefully chosen resources that are
+                                designed to make your journey smooth and effortless with outstanding results.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             {/* Footer Section */}
+
             <footer className="main-footer">
                 <div className="footer-container">
                     <div className="footer-col">
