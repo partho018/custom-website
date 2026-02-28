@@ -1,6 +1,25 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { motion } from 'framer-motion';
+import React from 'react';
 import './App.css';
+
+// Component Imports
+import Hero from './components/Hero';
+import BrandMarquee from './components/BrandMarquee';
+import Projects from './components/Projects';
+import Testimonials from './components/Testimonials';
+import AIImpact from './components/AIImpact';
+import WhatWeDo from './components/WhatWeDo';
+import WhyChooseUs from './components/WhyChooseUs';
+import Pricing from './components/Pricing';
+import Openings from './components/Openings';
+import ScrollingReferrals from './components/ScrollingReferrals';
+import FAQ from './components/FAQ';
+import Consultation from './components/Consultation';
+import PreFooter from './components/PreFooter';
+import Footer from './components/Footer';
+import Navigation from './components/Navigation';
+import BackToTop from './components/BackToTop';
+
+// Asset Imports
 import logo from './assets/logo.svg';
 import star from './assets/star.svg';
 import icons from './assets/icons.svg';
@@ -29,7 +48,6 @@ import client6 from '../img/Clint/6972023ccec47fa8734cf934_Client_Armen Avagyan 
 import client7 from '../img/Clint/697c78b3798750901911bb75_Client_Anika _916.avif';
 import client8 from '../img/Clint/69a044959b8bba79e7629219_Client_Tanmee _916.avif';
 
-
 // Services Images
 import wwd1 from '../img/we do/1.avif';
 import wwd2 from '../img/we do/2.avif';
@@ -49,12 +67,15 @@ import aiImg3 from '../img/AI-Powered Design/68c0fd7c6c69d5e8b586e825_Frame 2147
 import aiImg4 from '../img/AI-Powered Design/68c0fdca701e60e4fb26c2fa_Frame 427321588 (11) (1).avif';
 import aiImg5 from '../img/AI-Powered Design/68c0fe116b9d3d649da7d5ef_Frame 427321588 (13) (1).avif';
 import aiImg6 from '../img/AI-Powered Design/68c0feeeeec420934eb6dc33_f5af64da87fb7c474458934d16bc50fe_Frame 2147226581 (1).avif';
+
+// Why Choose Us Icons
 import infinityIcon from '../img/Why Choose Us/67bbf4557f15dfc01f0bbe24_Infinity.avif';
 import profileIcon from '../img/Why Choose Us/67bbf455cd6e05ec201e5e82_Profile-p-500.avif';
 import dollarIcon from '../img/Why Choose Us/67bbf455bde8347a515f5d6c_Dollar.avif';
 import diagramIcon from '../img/Why Choose Us/67bbf455657afc36ca73f802_diagram-p-500.avif';
 import starIcon from '../img/Why Choose Us/67bbf455f7d2b364987895ff_star-p-500.avif';
-
+import cornerGradient from '../img/68ba5e44ccb1468ce5b97221_96a931f11af1a2f6b37e251396d130df_6894f274513a65bb1abe220f_Gradient (1)-p-130x130q80.avif';
+import fortyPlus from '../img/40+.avif';
 
 function App() {
     const services = [
@@ -82,11 +103,12 @@ function App() {
 
     const projects = [
         {
-            category: "Travel",
-            title: "Easy Booking for Dream Trips",
-            desc: "Triply is a hassle-free & effective tour solution for travelers. It's an all-inclusive booking and planning website that helps people make their dream trips easier.",
-            stats: [{ label: "Pages in Projects", value: "40+" }, { label: "Retention Growth", value: "36%" }],
-            ceo: { name: "Shubho Al-Faroque", role: "Triply CEO", avatar: "https://i.pravatar.cc/150?u=shubho" },
+            category: "AI Advertising",
+            title: "Smart AI Ads That Scale Your Business Fast",
+            desc: "We build AI-powered ads for startups & businesses — better targeting, less budget wasted, more leads delivered.",
+            stats: [{ label: "Strategy", value: "Free" }, { label: "First Draft", value: "In 24 Hrs" }],
+            ceo: { name: "", role: "", avatar: null },
+            getServiceText: "Get This Service",
             bgColor: "#C6CFFF",
             btnColor: "#9AABFF",
             image: cardImg
@@ -118,7 +140,7 @@ function App() {
             stats: [{ label: "Conversion Rate", value: "+4.5%" }, { label: "Page Load Speed", value: "0.8s" }],
             ceo: { name: "Monica Geller", role: "ShopEase CEO", avatar: "https://i.pravatar.cc/150?u=monica" },
             bgColor: "#ABF5FF",
-            btnColor: "#ABF5FF",
+            btnColor: "#78E9F6",
             image: cardImg4
         },
         {
@@ -192,730 +214,99 @@ function App() {
         }
     ];
 
-    const [currentClientIndex, setCurrentClientIndex] = useState(0);
-    const [showBackToTop, setShowBackToTop] = useState(false);
-    const [isPaused, setIsPaused] = useState(false);
-    const [transitionEnabled, setTransitionEnabled] = useState(true);
-    const [hoveredVideoIndex, setHoveredVideoIndex] = useState(null);
-
-    useEffect(() => {
-        const handleScroll = () => {
-            if (window.scrollY > 300) {
-                setShowBackToTop(true);
-            } else {
-                setShowBackToTop(false);
-            }
-        };
-
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
-
-    const scrollToTop = () => {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
-    };
-
-    useEffect(() => {
-        if (isPaused) return;
-        const timer = setInterval(() => {
-            setTransitionEnabled(true);
-            setCurrentClientIndex((prev) => prev + 1);
-        }, 3500);
-        return () => clearInterval(timer);
-    }, [isPaused, clientStories.length]);
-
-    useEffect(() => {
-        if (currentClientIndex === clientStories.length) {
-            const timer = setTimeout(() => {
-                setTransitionEnabled(false);
-                setCurrentClientIndex(0);
-            }, 700);
-            return () => clearTimeout(timer);
+    const faqs = [
+        {
+            id: 1,
+            question: "How do you approach a new design project?",
+            answer: "We start with deep discovery and strategy to understand your business goals, target audience, and market landscape. From there, we move to user journey mapping, wireframing, and finally high-fidelity UI design."
+        },
+        {
+            id: 2,
+            question: "What industries do you specialize in?",
+            answer: "While we have extensive experience in Fintech, Healthcare, and SaaS, our design-first methodology allows us to tackle complex problems in any industry, from Edtech to Cybersecurity."
+        },
+        {
+            id: 3,
+            question: "Do you offer post-launch support and optimization?",
+            answer: "Absolutely. We view our client relationships as long-term partnerships. We offer flexible maintenance and optimization retainers to ensure your product continues to evolve and perform."
+        },
+        {
+            id: 4,
+            question: "How long does a typical design project take?",
+            answer: "Most projects range from 4 to 12 weeks, depending on the scope and complexity. We emphasize quality and thoroughness, while maintaining an agile pace to meet your business timelines."
+        },
+        {
+            id: 5,
+            question: "Will you help with the actual development of the design?",
+            answer: "Yes, we have a dedicated development team specializing in React, Next.js, and Webflow, ensuring your designs are implemented with pixel-perfect precision and high performance."
         }
-    }, [currentClientIndex, clientStories.length]);
-
-
+    ];
 
     return (
         <div className="app-container">
-            {/* Top Navigation - Text Only */}
             <header className="site-header">
                 <h2 className="site-logo-text">designmonks</h2>
             </header>
 
-            <main className="hero-section">
-                {/* Hero Content */}
-                <div className="hero-main-content">
-                    <motion.div
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        className="rating-badge"
-                    >
-                        <img src={logo} alt="brand" className="brand-logo-small" />
-                        <div className="rating-visual">
-                            <span className="rating-num">4.9</span>
-                            <img src={star} alt="stars" className="star-img" />
-                        </div>
-                        <p className="agency-sub">Leading UI/UX Design Agency</p>
-                    </motion.div>
+            <Hero
+                logo={logo}
+                star={star}
+                icons={icons}
+                countries={countries}
+                mockupLeft={mockupLeft}
+                floatingCube={floatingCube}
+                floatingAi={floatingAi}
+                mockupMain={mockupMain}
+                floatingRing={floatingRing}
+                floatingCursor={floatingCursor}
+            />
 
-                    <motion.h1
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.1 }}
-                        className="hero-title"
-                    >
-                        <span className="we-text">We</span> <span className="elegant-serif">Design</span> <span className="red-hat-text">Products That</span> <br />
-                        <span className="red-hat-text">Drive</span> <img src={icons} alt="icons" className="title-icons" /> <span className="elegant-serif">Results</span>
-                    </motion.h1>
+            <BrandMarquee glowImg={glowImg} />
 
-                    <motion.div
-                        initial={{ opacity: 0, y: 15 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.2 }}
-                        className="country-chip-wrapper"
-                    >
-                        <img src={countries} alt="Designing across 8+ countries" className="country-chip-img" />
-                    </motion.div>
+            <Projects projects={projects} ctaArrow={ctaArrow} />
 
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.9 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ delay: 0.3 }}
-                        className="cta-wrapper"
-                    >
-                        <button className="purple-btn">
-                            <span className="btn-chat-icon">
-                                <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M24 13C24 18.5228 19.5228 23 14 23C12.5 23 9 23 7 25C7 23 7 19.5 7 18.5C4.5 16.5 4 15 4 13C4 7.47715 8.47715 3 14 3C19.5228 3 24 7.47715 24 13Z" fill="white" />
-                                    <path d="M10 14C10 14 11.5 16.5 14 16.5C16.5 16.5 18 14 18 14" stroke="#7D40FF" strokeWidth="2" strokeLinecap="round" />
-                                </svg>
-                            </span>
-                            Book a Call
-                        </button>
-                    </motion.div>
-                </div>
+            <Testimonials clientStories={clientStories} />
 
-                {/* Left Side Floating Elements */}
-                <div className="floating-elements-container left">
-                    <motion.img
-                        src={mockupLeft}
-                        alt="mockup left"
-                        className="floating-mockup-left"
-                        initial={{ opacity: 0, x: -100 }}
-                        animate={{
-                            opacity: 1,
-                            x: 0,
-                            y: [0, 15, 0]
-                        }}
-                        transition={{
-                            x: { duration: 0.8, delay: 0.4 },
-                            y: { duration: 5, repeat: Infinity, ease: "easeInOut" }
-                        }}
-                    />
-                    <motion.img
-                        src={floatingCube}
-                        alt="cube"
-                        className="floating3d cube-3d"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ delay: 0.6 }}
-                    />
-                    <motion.img
-                        src={floatingAi}
-                        alt="ai"
-                        className="floating3d ai-3d"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ delay: 0.7 }}
-                    />
-                </div>
+            <AIImpact
+                aiCenterLogo={aiCenterLogo}
+                aiImg1={aiImg1}
+                aiImg2={aiImg2}
+                aiImg3={aiImg3}
+                aiImg4={aiImg4}
+                aiImg5={aiImg5}
+                aiImg6={aiImg6}
+            />
 
-                {/* Right Side Floating Elements */}
-                <div className="floating-elements-container">
-                    <motion.img
-                        src={mockupMain}
-                        alt="mockup"
-                        className="floating-mockup"
-                        initial={{ opacity: 0, x: 100 }}
-                        animate={{
-                            opacity: 1,
-                            x: 0,
-                            y: [0, -15, 0]
-                        }}
-                        transition={{
-                            x: { duration: 0.8, delay: 0.4 },
-                            y: { duration: 5, repeat: Infinity, ease: "easeInOut" }
-                        }}
-                    />
-                    <motion.img
-                        src={floatingRing}
-                        alt="ring"
-                        className="floating3d ring-3d"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ delay: 0.6 }}
-                    />
-                    <motion.img
-                        src={floatingCursor}
-                        alt="cursor"
-                        className="floating3d cursor-3d"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ delay: 0.7 }}
-                    />
-                </div>
-            </main>
+            <WhatWeDo services={services} />
 
-            {/* Trusted By Section / Marquee */}
-            <section className="trusted-by-section">
-                {/* Background Glow Image */}
-                <img src={glowImg} alt="glow effect" className="background-glow-img" />
+            <WhyChooseUs
+                infinityIcon={infinityIcon}
+                profileIcon={profileIcon}
+                dollarIcon={dollarIcon}
+                diagramIcon={diagramIcon}
+                starIcon={starIcon}
+            />
 
-                <div className="marquee-container">
-                    <div className="marquee-content marquee-top">
-                        {/* Duplicate content to make the scroll seamless */}
-                        <div className="marquee-track left">
-                            <span className="brand-logo"><span className="symbol">✜</span> Liberate Labs</span>
-                            <span className="brand-logo">edvive</span>
-                            <span className="brand-logo font-bold">LeKlub</span>
-                            <span className="brand-logo italic">Lendiview</span>
-                            <span className="brand-logo"><span className="symbol">∮</span> Likely</span>
-                            <span className="brand-logo font-script">Mymemorybox</span>
-                            {/* Duplicates */}
-                            <span className="brand-logo"><span className="symbol">✜</span> Liberate Labs</span>
-                            <span className="brand-logo">edvive</span>
-                            <span className="brand-logo font-bold">LeKlub</span>
-                            <span className="brand-logo italic">Lendiview</span>
-                            <span className="brand-logo"><span className="symbol">∮</span> Likely</span>
-                            <span className="brand-logo font-script">Mymemorybox</span>
-                        </div>
-                    </div>
+            <Pricing />
 
-                    <div className="marquee-content marquee-bottom">
-                        <div className="marquee-track right">
-                            <span className="brand-logo">mpower</span>
-                            <span className="brand-logo font-wide">BizPhix</span>
-                            <span className="brand-logo"><span className="symbol">🏛</span> Buttercup Venues</span>
-                            <span className="brand-logo"><span className="symbol">☁</span> CarboBon</span>
-                            <span className="brand-logo font-serif">Carnesia</span>
-                            <span className="brand-logo"><span className="symbol">⚡</span> Compai.es</span>
-                            <span className="brand-logo"><span className="symbol">◎</span> CPG Syn</span>
-                            {/* Duplicates */}
-                            <span className="brand-logo">mpower</span>
-                            <span className="brand-logo font-wide">BizPhix</span>
-                            <span className="brand-logo"><span className="symbol">🏛</span> Buttercup Venues</span>
-                            <span className="brand-logo"><span className="symbol">☁</span> CarboBon</span>
-                            <span className="brand-logo font-serif">Carnesia</span>
-                            <span className="brand-logo"><span className="symbol">⚡</span> Compai.es</span>
-                            <span className="brand-logo"><span className="symbol">◎</span> CPG Syn</span>
-                        </div>
-                    </div>
-                </div>
-            </section>
+            <Openings />
 
-            {/* Proven Success Section */}
-            <section className="proven-success-section">
-                <div className="success-content">
-                    <span className="industry-wins-badge">Industry Wins</span>
-                    <h2 className="success-title">
-                        Proven Success in <br />
-                        <span className="elegant-serif dark">Every Industry</span>
-                    </h2>
+            <ScrollingReferrals
+                client1={client1} client2={client2} client3={client3} client4={client4}
+                client5={client5} client6={client6} client7={client7} client8={client8}
+            />
 
-                    <div className="projects-grid">
-                        {projects.map((project, index) => (
-                            <div
-                                key={index}
-                                className="project-card"
-                                style={{ backgroundColor: project.bgColor }}
-                            >
-                                <div className="project-info">
-                                    <p className="project-category">{project.category}</p>
-                                    <h3 className="project-title">{project.title}</h3>
-                                    <p className="project-desc">{project.desc}</p>
+            <FAQ faqs={faqs} />
 
-                                    <div className="project-stats">
-                                        {project.stats.map((stat, sIndex) => (
-                                            <div key={sIndex} className="stat-item">
-                                                <p className="stat-label">{stat.label}</p>
-                                                <p className="stat-value">{stat.value}</p>
-                                            </div>
-                                        ))}
-                                    </div>
+            <Consultation cornerGradient={cornerGradient} client2={client2} />
 
-                                    <div className="ceo-badge" style={{ backgroundColor: project.btnColor }}>
-                                        <img src={project.ceo.avatar} alt={project.ceo.name} className="ceo-avatar" />
-                                        <div className="ceo-details">
-                                            <p className="ceo-name">{project.ceo.name}</p>
-                                            <p className="ceo-role">{project.ceo.role}</p>
-                                        </div>
-                                        <img src={ctaArrow} alt="arrow" className="ceo-arrow-icon" />
-                                    </div>
-                                </div>
+            <PreFooter fortyPlus={fortyPlus} />
 
-                                <div className="project-visual">
-                                    <div className="visual-container">
-                                        <img src={project.image} alt="project visual" className="card-mockup-img" />
-                                    </div>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
+            <Footer footerImg={footerImg} />
 
-                    <div className="see-all-container">
-                        <button className="see-all-btn">
-                            See All Projects
-                            <img src={ctaArrow} alt="arrow" className="see-all-arrow-icon" />
-                        </button>
-                    </div>
-                </div>
-            </section>
+            <Navigation />
 
-
-            {/* Client Stories Section */}
-            <section className="client-stories-section">
-                <div className="client-stories-content">
-                    <span className="client-stories-badge">Client Stories</span>
-                    <h2 className="client-stories-title">
-                        Success Stories <br />
-                        That <span className="elegant-serif dark">Inspire Us</span>
-                    </h2>
-                </div>
-
-                <div
-                    className="client-carousel-container"
-                    onMouseEnter={() => setIsPaused(true)}
-                    onMouseLeave={() => setIsPaused(false)}
-                >
-                    <motion.div
-                        className="client-carousel-track"
-                        animate={{
-                            x: `-${currentClientIndex * 25}vw`
-                        }}
-                        transition={transitionEnabled ? {
-                            duration: 1.2,
-                            ease: [0.65, 0, 0.35, 1] // Very smooth easeInOut
-                        } : { duration: 0 }}
-                    >
-                        {/* Render original + first 4 duplicates for seamless loop */}
-                        {[...clientStories, ...clientStories.slice(0, 4)].map((story, index) => (
-                            <div
-                                key={index}
-                                className="client-card"
-                                onMouseEnter={() => {
-                                    setHoveredVideoIndex(index);
-                                    setIsPaused(true);
-                                }}
-                                onMouseLeave={() => {
-                                    setHoveredVideoIndex(null);
-                                    setIsPaused(false);
-                                }}
-                            >
-                                <div className="client-card-inner">
-                                    {hoveredVideoIndex === index ? (
-                                        <div className="client-video-wrapper">
-                                            <iframe
-                                                className="client-video-iframe"
-                                                src="https://www.youtube.com/embed/oa1qKT-VJvo?autoplay=1&mute=1&controls=0&loop=1&playlist=oa1qKT-VJvo&modestbranding=1&rel=0&iv_load_policy=3"
-                                                title="Client Story Video"
-                                                frameBorder="0"
-                                                allow="autoplay; encrypted-media"
-                                            ></iframe>
-                                        </div>
-                                    ) : (
-                                        <img src={story.image} alt={story.name} className="client-image" />
-                                    )}
-                                    <div className="client-play-btn" style={{ opacity: hoveredVideoIndex === index ? 0 : 1 }}>
-                                        <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
-                                            <circle cx="30" cy="30" r="30" fill="white" fillOpacity="0.3" />
-                                            <path d="M38 30L26 37V23L38 30Z" fill="white" />
-                                        </svg>
-                                    </div>
-                                    <div className="client-card-overlay" style={{ opacity: hoveredVideoIndex === index ? 0 : 1, transition: 'opacity 0.3s ease' }}>
-                                        <div className="client-brand">
-                                            <span className="brand-dot">●</span> {story.brand}
-                                        </div>
-                                        <p className="client-testimonial">"{story.testimonial}"</p>
-                                        <div className="client-info">
-                                            <h4 className="client-name">{story.name}</h4>
-                                            <p className="client-role">{story.role}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        ))}
-                    </motion.div>
-                </div>
-            </section>
-
-            {/* Impact Section */}
-            <section className="impact-section">
-                <div className="impact-container">
-                    <span className="impact-badge">AI-Powered Design</span>
-                    <h2 className="impact-title">
-                        Smarter Design, <span className="elegant-serif">Supercharged By AI</span>
-                    </h2>
-                    <p className="impact-subtitle">
-                        From wireframes to launch, we blend AI tools with strategy to deliver faster, <br />
-                        sharper, and data-led design results.
-                    </p>
-
-                    <div className="ai-features-grid">
-                        <svg className="connecting-lines-svg" viewBox="0 0 1000 600" fill="none" preserveAspectRatio="none">
-                            <defs>
-                                <radialGradient id="dot-glow" cx="50%" cy="50%" r="50%">
-                                    <stop offset="0%" stopColor="#b085ff" stopOpacity="1" />
-                                    <stop offset="100%" stopColor="#7D40FF" stopOpacity="0.3" />
-                                </radialGradient>
-
-                            </defs>
-
-
-
-                            {/* ── TOP MIDDLE: card → center ── */}
-                            <path id="p-top-mid" d="M500 212 V300" stroke="rgba(125,64,255,0.4)" strokeWidth="1.5" />
-                            <circle r="2" fill="#a67fff">
-                                <animateMotion dur="2.3s" repeatCount="indefinite" begin="0s" rotate="none">
-                                    <mpath href="#p-top-mid" />
-                                </animateMotion>
-                            </circle>
-
-                            {/* ── BOTTOM MIDDLE: card → center ── */}
-                            <path id="p-bot-mid" d="M500 388 V300" stroke="rgba(125,64,255,0.4)" strokeWidth="1.5" />
-                            <circle r="2" fill="#a67fff">
-                                <animateMotion dur="3.7s" repeatCount="indefinite" begin="1.8s" rotate="none">
-                                    <mpath href="#p-bot-mid" />
-                                </animateMotion>
-                            </circle>
-
-                            {/* ── LEFT TOP: card → center ── */}
-                            <path id="p-left-top" d="M160 212 V260 Q160 275, 185 275 H380 C410 275, 420 300, 440 300 H460" stroke="rgba(125,64,255,0.4)" strokeWidth="1.5" fill="none" />
-                            <circle r="2" fill="#a67fff">
-                                <animateMotion dur="2.9s" repeatCount="indefinite" begin="0.7s" rotate="none">
-                                    <mpath href="#p-left-top" />
-                                </animateMotion>
-                            </circle>
-
-                            {/* ── LEFT BOTTOM: card → center ── */}
-                            <path id="p-left-bot" d="M160 388 V340 Q160 325, 185 325 H380 C410 325, 420 300, 440 300 H460" stroke="rgba(125,64,255,0.4)" strokeWidth="1.5" fill="none" />
-                            <circle r="2" fill="#a67fff">
-                                <animateMotion dur="4.1s" repeatCount="indefinite" begin="2.9s" rotate="none">
-                                    <mpath href="#p-left-bot" />
-                                </animateMotion>
-                            </circle>
-
-                            {/* ── RIGHT TOP: card → center ── */}
-                            <path id="p-right-top" d="M840 212 V260 Q840 275, 815 275 H620 C590 275, 580 300, 560 300 H540" stroke="rgba(125,64,255,0.4)" strokeWidth="1.5" fill="none" />
-                            <circle r="2" fill="#a67fff">
-                                <animateMotion dur="3.3s" repeatCount="indefinite" begin="1.4s" rotate="none">
-                                    <mpath href="#p-right-top" />
-                                </animateMotion>
-                            </circle>
-
-                            {/* ── RIGHT BOTTOM: card → center ── */}
-                            <path id="p-right-bot" d="M840 388 V340 Q840 325, 815 325 H620 C590 325, 580 300, 560 300 H540" stroke="rgba(125,64,255,0.4)" strokeWidth="1.5" fill="none" />
-                            <circle r="2" fill="#a67fff">
-                                <animateMotion dur="2.6s" repeatCount="indefinite" begin="3.5s" rotate="none">
-                                    <mpath href="#p-right-bot" />
-                                </animateMotion>
-                            </circle>
-                        </svg>
-                        <div className="ai-center-logo-wrapper">
-                            <div className="center-glow"></div>
-                            <img src={aiCenterLogo} alt="AI Logo" className="ai-center-logo" />
-                        </div>
-
-                        <div className="ai-card top-left">
-                            <div className="ai-card-content">
-                                <h3>UX Copy <span className="elegant-serif">That Clicks</span></h3>
-                                <p>We use AI to create effective copies like CTAs and microcopy that speaks.</p>
-                            </div>
-                            <div className="ai-card-visual">
-                                <img src={aiImg1} alt="UX Copy AI" />
-                            </div>
-                        </div>
-
-                        <div className="ai-card top-center">
-                            <div className="ai-card-content">
-                                <h3>Visuals, <span className="elegant-serif">Instantly On Point</span></h3>
-                                <p>We generate custom visuals using AI for faster concept directions, brand-ready.</p>
-                            </div>
-                            <div className="ai-card-visual">
-                                <img src={aiImg2} alt="Visuals AI" />
-                            </div>
-                        </div>
-
-                        <div className="ai-card top-right">
-                            <div className="ai-card-content">
-                                <h3>Data-Led <span className="elegant-serif">Design Decisions</span></h3>
-                                <p>We predict user behavior before launch with AI-powered heatmaps that help us.</p>
-                            </div>
-                            <div className="ai-card-visual">
-                                <img src={aiImg3} alt="Data AI" />
-                            </div>
-                        </div>
-
-                        <div className="ai-card bottom-left">
-                            <div className="ai-card-content">
-                                <h3>Smarter & <span className="elegant-serif">Faster Wireframes</span></h3>
-                                <p>We rapidly turn ideas into functional wireframes using AI tools, with less.</p>
-                            </div>
-                            <div className="ai-card-visual">
-                                <img src={aiImg4} alt="Wireframes AI" />
-                            </div>
-                        </div>
-
-                        <div className="ai-card bottom-center">
-                            <div className="ai-card-content">
-                                <h3>Launch Quicker, <span className="elegant-serif">Spend Less</span></h3>
-                                <p>AI reduces revisions and guesswork and makes your website ready to launch.</p>
-                            </div>
-                            <div className="ai-card-visual">
-                                <img src={aiImg5} alt="Launch AI" />
-                            </div>
-                        </div>
-
-                        <div className="ai-card bottom-right">
-                            <div className="ai-card-content">
-                                <h3>No Blank <span className="elegant-serif">Canvas Struggles</span></h3>
-                                <p>AI generates editable mockups from prompts so we can skip the slow start.</p>
-                            </div>
-                            <div className="ai-card-visual">
-                                <img src={aiImg6} alt="Mockups AI" />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            {/* What We Do Section */}
-            <section className="what-we-do-section">
-                <div className="wwd-content">
-                    <span className="wwd-badge">What We Do</span>
-                    <h2 className="wwd-title">
-                        We Design <span className="elegant-serif">Brands</span> That <span className="elegant-serif">Speak</span> To Audiences
-                    </h2>
-                </div>
-
-                <div className="wwd-services-container">
-                    {services.map((service, index) => (
-                        <div key={index} className="wwd-service-row">
-                            <div className="wwd-text-col">
-                                <h3 className="service-title">
-                                    {service.title.split(' ')[0]} <span className="elegant-serif">{service.title.split(' ').slice(1).join(' ')}</span>
-                                </h3>
-                                <div className="service-divider"></div>
-                                <p className="service-desc">{service.desc}</p>
-                                <a href="#" className="service-link">
-                                    See More
-                                    <span className="arrow-icon">
-                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M18.1152 8.99999C18.1185 9 18.1217 9 18.125 9L18.125 9.00006V11.0001H18.0904C14.1661 11.0163 11.625 13.7984 11.625 16.25H9.625C9.625 14.2566 10.6462 12.3552 12.3133 11.0001H1.875V9.00006H12.3134C10.6462 7.64492 9.625 5.74342 9.625 3.75H11.625C11.625 6.20673 14.1768 8.99539 18.1152 8.99999Z" fill="currentColor" />
-                                        </svg>
-                                    </span>
-
-                                </a>
-                            </div>
-                            <div className="wwd-images-col">
-                                <div className="service-image-card main-img">
-                                    <img src={service.images[0]} alt={service.title} />
-                                </div>
-                                <div className="service-image-card side-img">
-                                    <img src={service.images[1]} alt={service.title} />
-                                </div>
-                            </div>
-                        </div>
-                    ))}
-                </div>
-            </section>
-
-            {/* Why Choose Us Section */}
-            <section className="why-choose-us-section">
-                <div className="why-choose-us-container">
-                    <span className="why-choose-us-badge">Why Choose Us</span>
-                    <h2 className="why-choose-us-title">
-                        We <span className="elegant-serif dark">Design</span> for the <span className="elegant-serif dark">Future</span> to <br />
-                        Drive Today's <span className="elegant-serif dark">Success</span>
-                    </h2>
-
-                    <div className="why-choose-us-grid">
-                        <div className="wcu-card">
-                            <div className="wcu-icon-wrapper">
-                                <img src={infinityIcon} alt="Unlimited Revisions" />
-                            </div>
-                            <h3 className="wcu-card-title">Unlimited Revisions</h3>
-                            <p className="wcu-card-desc">
-                                We're committed to your satisfaction with unlimited revisions at every step.
-                                Our mission is to make your vision come to life exactly as you imagine.
-                            </p>
-                        </div>
-
-                        <div className="wcu-card">
-                            <div className="wcu-icon-wrapper">
-                                <img src={profileIcon} alt="Lifetime Support" />
-                            </div>
-                            <h3 className="wcu-card-title">Lifetime Support</h3>
-                            <p className="wcu-card-desc">
-                                With our lifetime support, you're never alone. We'll be there for you at every
-                                stage with necessary guidance and assistance whenever you need it.
-                            </p>
-                        </div>
-
-                        <div className="wcu-card">
-                            <div className="wcu-icon-wrapper">
-                                <img src={dollarIcon} alt="Personalised Plans" />
-                            </div>
-                            <h3 className="wcu-card-title">Personalised Plans</h3>
-                            <p className="wcu-card-desc">
-                                Get top-quality service without breaking the bank. Our rates are
-                                designed to fit your budget so that you can get the best value for your investment.
-                            </p>
-                        </div>
-
-                        <div className="wcu-card">
-                            <div className="wcu-icon-wrapper">
-                                <img src={diagramIcon} alt="Custom Design Solutions" />
-                            </div>
-                            <h3 className="wcu-card-title">Custom Design Solutions</h3>
-                            <p className="wcu-card-desc">
-                                Our easy payment options are completely flexible. So, you can invest
-                                in your success while staying within your budget.
-                            </p>
-                        </div>
-
-                        <div className="wcu-card">
-                            <div className="wcu-icon-wrapper">
-                                <img src={starIcon} alt="24/7 Customer Support" />
-                            </div>
-                            <h3 className="wcu-card-title">24/7 Customer Support</h3>
-                            <p className="wcu-card-desc">
-                                Benefit from the expertise of our carefully chosen resources that are
-                                designed to make your journey smooth and effortless with outstanding results.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            {/* Footer Section */}
-
-            <footer className="main-footer">
-                <div className="footer-container">
-                    <div className="footer-col">
-                        <h3>Important Links</h3>
-                        <ul>
-                            <li><a href="#">Contact Us</a></li>
-                            <li><a href="#">About Us</a></li>
-                            <li><a href="#">Products</a></li>
-                            <li><a href="#">Industry</a></li>
-                            <li><a href="#">Blogs</a></li>
-                        </ul>
-                    </div>
-                    <div className="footer-col">
-                        <h3>Services</h3>
-                        <ul>
-                            <li><a href="#">UI/UX Design</a></li>
-                            <li><a href="#">Web Design</a></li>
-                            <li><a href="#">Logo & Branding</a></li>
-                            <li><a href="#">Webflow Design</a></li>
-                            <li><a href="#">Framer Design</a></li>
-                        </ul>
-                    </div>
-                    <div className="footer-col">
-                        <h3>Specialized Industry</h3>
-                        <ul>
-                            <li><a href="#">Fintech Industry</a></li>
-                            <li><a href="#">Healthcare & Fitness Industry</a></li>
-                            <li><a href="#">Edtech Industry</a></li>
-                            <li><a href="#">Cybersecurity Industry</a></li>
-                            <li>
-                                <a href="#" className="footer-download-btn">
-                                    Company Deck
-                                    <span className="download-icon">
-                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M12 5V19M12 19L5 12M12 19L19 12" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-                                        </svg>
-                                    </span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div className="footer-col">
-                        <h3>Compare</h3>
-                        <ul>
-                            <li><a href="#">Vs Agencies</a></li>
-                            <li><a href="#">Vs Freelancers</a></li>
-                            <li><a href="#">Vs Inhouse</a></li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div className="footer-bottom">
-                    <div className="footer-bottom-container">
-                        <div className="footer-bottom-left">
-                            <a href="#">Terms & Conditions</a>
-                        </div>
-                        <div className="footer-bottom-center">
-                            <p>© 2026, Design Monks, All Rights Reserved.</p>
-                        </div>
-                        <div className="footer-bottom-right">
-                            <a href="#">Privacy Policy</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="footer-extra-image">
-                    <img src={footerImg} alt="Decorative Footer" />
-                </div>
-            </footer>
-
-
-            {/* Floating Bottom Nav */}
-            <div className="nav-blur-bg"></div>
-            <nav className="floating-nav">
-                <div className="nav-inner">
-                    <a href="#projects" className="nav-link">Projects</a>
-                    <a href="#services" className="nav-link">Services</a>
-
-                    <button className="nav-cta">
-                        <span className="cta-icon">
-                            <svg width="20" height="20" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M24 13C24 18.5228 19.5228 23 14 23C12.5 23 9 23 7 25C7 23 7 19.5 7 18.5C4.5 16.5 4 15 4 13C4 7.47715 8.47715 3 14 3C19.5228 3 24 7.47715 24 13Z" fill="white" />
-                                <path d="M10 14C10 14 11.5 16.5 14 16.5C16.5 16.5 18 14 18 14" stroke="#7D40FF" strokeWidth="2" strokeLinecap="round" />
-                            </svg>
-                        </span>
-                        Start a Project
-                    </button>
-
-
-                    <a href="#pricing" className="nav-link">Pricing</a>
-                    <a href="#more" className="nav-link">More</a>
-                </div>
-            </nav>
-            {/* Back to Top Button */}
-            {
-                showBackToTop && (
-                    <motion.button
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: 20 }}
-                        onClick={scrollToTop}
-                        className="back-to-top-btn"
-                    >
-                        <span className="btt-icon">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <circle cx="12" cy="12" r="10" fill="white" />
-                                <path d="M12 16V8M12 8L8 12M12 8L16 12" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                            </svg>
-                        </span>
-                        Back to Top
-                    </motion.button>
-                )
-            }
+            <BackToTop />
         </div>
     );
 }
