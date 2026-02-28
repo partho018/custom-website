@@ -201,6 +201,55 @@ function App() {
     const [hoveredVideoIndex, setHoveredVideoIndex] = useState(null);
     const [openFaq, setOpenFaq] = useState(null);
     const [selectedBudget, setSelectedBudget] = useState("More than $50K");
+    const [formStatus, setFormStatus] = useState({ submitting: false, success: false, error: null });
+    const [formData, setFormData] = useState({
+        fullName: '',
+        email: '',
+        whatsapp: '',
+        details: ''
+    });
+
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setFormData(prev => ({ ...prev, [name]: value }));
+    };
+
+    const handleFormSubmit = async (e) => {
+        e.preventDefault();
+        setFormStatus({ submitting: true, success: false, error: null });
+
+        // Prepare data for FormSubmit
+        const dataToSend = {
+            ...formData,
+            budget: selectedBudget,
+            _subject: `New Project Inquiry from ${formData.fullName}`,
+            _template: 'table', // Makes the email look clean
+            _captcha: 'false'   // Disables the captcha for smoother UX
+        };
+
+        try {
+            const response = await fetch("https://formsubmit.co/ajax/Parthosamadder00@gmail.com", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    Accept: "application/json",
+                },
+                body: JSON.stringify(dataToSend),
+            });
+
+            const result = await response.json();
+            if (response.ok) {
+                setFormStatus({ submitting: false, success: true, error: null });
+                setFormData({ fullName: '', email: '', whatsapp: '', details: '' });
+                setSelectedBudget("More than $50K");
+            } else {
+                setFormStatus({ submitting: false, success: false, error: "Submission failed. Please try again." });
+            }
+        } catch (err) {
+            setFormStatus({ submitting: false, success: false, error: "Something went wrong. Please try again." });
+        }
+    };
+
 
     const toggleFaq = (index) => {
         setOpenFaq(openFaq === index ? null : index);
@@ -1168,49 +1217,96 @@ function App() {
 
                         {/* Right Side: Form */}
                         <div className="consultation-form-wrapper">
-                            <form className="consultation-form">
-                                <div className="form-group">
-                                    <label>Full Name</label>
-                                    <input type="text" placeholder="John Doe" />
-                                </div>
-                                <div className="form-row">
-                                    <div className="form-group">
-                                        <label>Your Email</label>
-                                        <input type="email" placeholder="yourmail@gmail.com" />
+                            <form className="consultation-form" onSubmit={handleFormSubmit}>
+                                {formStatus.success ? (
+                                    <div className="form-success-message">
+                                        <h3 style={{ color: '#fff', marginBottom: '10px' }}>Thank you! 🎉</h3>
+                                        <p style={{ color: 'rgba(255,255,255,0.7)' }}>Your message has been sent successfully. We will get back to you within 24 hours.</p>
+                                        <button 
+                                            type="button" 
+                                            className="budget-btn active" 
+                                            style={{ marginTop: '20px' }}
+                                            onClick={() => setFormStatus({ submitting: false, success: false, error: null })}
+                                        >
+                                            Send Another Message
+                                        </button>
                                     </div>
-                                    <div className="form-group">
-                                        <label>Whatsapp Number</label>
-                                        <input type="text" placeholder="1123 1234567" />
-                                    </div>
-                                </div>
-                                <div className="form-group">
-                                    <label>Project Budget</label>
-                                    <div className="budget-options">
-                                        {["Less than $5K", "$5K - $10K", "$10K - $20K", "$20K - $50K", "More than $50K"].map((budget) => (
-                                            <button 
-                                                key={budget} 
-                                                type="button" 
-                                                className={`budget-btn ${budget === selectedBudget ? 'active' : ''}`}
-                                                onClick={() => setSelectedBudget(budget)}
-                                            >
-                                                {budget}
-                                            </button>
-                                        ))}
-                                    </div>
-                                </div>
-                                <div className="form-group">
-                                    <label>Project Details</label>
-                                    <textarea placeholder="I want to redesign my website.."></textarea>
-                                </div>
-                                <button type="submit" className="connect-submit-btn">
-                                    <span>Let's Connect</span>
-                                    <span className="rocket-icon">
-                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                                            <line x1="5" y1="12" x2="19" y2="12"></line>
-                                            <polyline points="12 5 19 12 12 19"></polyline>
-                                        </svg>
-                                    </span>
-                                </button>
+                                ) : (
+                                    <>
+                                        <div className="form-group">
+                                            <label>Full Name</label>
+                                            <input 
+                                                type="text" 
+                                                name="fullName"
+                                                placeholder="John Doe" 
+                                                value={formData.fullName}
+                                                onChange={handleInputChange}
+                                                required 
+                                            />
+                                        </div>
+                                        <div className="form-row">
+                                            <div className="form-group">
+                                                <label>Your Email</label>
+                                                <input 
+                                                    type="email" 
+                                                    name="email"
+                                                    placeholder="yourmail@gmail.com" 
+                                                    value={formData.email}
+                                                    onChange={handleInputChange}
+                                                    required 
+                                                />
+                                            </div>
+                                            <div className="form-group">
+                                                <label>Whatsapp Number</label>
+                                                <input 
+                                                    type="text" 
+                                                    name="whatsapp"
+                                                    placeholder="1123 1234567" 
+                                                    value={formData.whatsapp}
+                                                    onChange={handleInputChange}
+                                                    required 
+                                                />
+                                            </div>
+                                        </div>
+                                        <div className="form-group">
+                                            <label>Project Budget</label>
+                                            <div className="budget-options">
+                                                {["Less than $5K", "$5K - $10K", "$10K - $20K", "$20K - $50K", "More than $50K"].map((budget) => (
+                                                    <button 
+                                                        key={budget} 
+                                                        type="button" 
+                                                        className={`budget-btn ${budget === selectedBudget ? 'active' : ''}`}
+                                                        onClick={() => setSelectedBudget(budget)}
+                                                    >
+                                                        {budget}
+                                                    </button>
+                                                ))}
+                                            </div>
+                                        </div>
+                                        <div className="form-group">
+                                            <label>Project Details</label>
+                                            <textarea 
+                                                name="details"
+                                                placeholder="I want to redesign my website.."
+                                                value={formData.details}
+                                                onChange={handleInputChange}
+                                                required
+                                            ></textarea>
+                                        </div>
+                                        {formStatus.error && <p style={{ color: '#ff4d4d', fontSize: '14px', marginBottom: '10px' }}>{formStatus.error}</p>}
+                                        <button type="submit" className="connect-submit-btn" disabled={formStatus.submitting}>
+                                            <span>{formStatus.submitting ? 'Sending...' : "Let's Connect"}</span>
+                                            {!formStatus.submitting && (
+                                                <span className="rocket-icon">
+                                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                                                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                                                        <polyline points="12 5 19 12 12 19"></polyline>
+                                                    </svg>
+                                                </span>
+                                            )}
+                                        </button>
+                                    </>
+                                )}
                             </form>
                         </div>
                     </div>
