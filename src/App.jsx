@@ -54,6 +54,8 @@ import profileIcon from '../img/Why Choose Us/67bbf455cd6e05ec201e5e82_Profile-p
 import dollarIcon from '../img/Why Choose Us/67bbf455bde8347a515f5d6c_Dollar.avif';
 import diagramIcon from '../img/Why Choose Us/67bbf455657afc36ca73f802_diagram-p-500.avif';
 import starIcon from '../img/Why Choose Us/67bbf455f7d2b364987895ff_star-p-500.avif';
+import cornerGradient from '../img/68ba5e44ccb1468ce5b97221_96a931f11af1a2f6b37e251396d130df_6894f274513a65bb1abe220f_Gradient (1)-p-130x130q80.avif';
+import fortyPlus from '../img/40+.avif';
 
 
 function App() {
@@ -197,6 +199,40 @@ function App() {
     const [isPaused, setIsPaused] = useState(false);
     const [transitionEnabled, setTransitionEnabled] = useState(true);
     const [hoveredVideoIndex, setHoveredVideoIndex] = useState(null);
+    const [openFaq, setOpenFaq] = useState(null);
+    const [selectedBudget, setSelectedBudget] = useState("More than $50K");
+
+    const toggleFaq = (index) => {
+        setOpenFaq(openFaq === index ? null : index);
+    };
+
+    const faqs = [
+        {
+            id: 1,
+            question: "How do you approach a new design project?",
+            answer: "We start with deep discovery and strategy to understand your business goals, target audience, and market landscape. From there, we move to user journey mapping, wireframing, and finally high-fidelity UI design."
+        },
+        {
+            id: 2,
+            question: "What industries do you specialize in?",
+            answer: "While we have extensive experience in Fintech, Healthcare, and SaaS, our design-first methodology allows us to tackle complex problems in any industry, from Edtech to Cybersecurity."
+        },
+        {
+            id: 3,
+            question: "Do you offer post-launch support and optimization?",
+            answer: "Absolutely. We view our client relationships as long-term partnerships. We offer flexible maintenance and optimization retainers to ensure your product continues to evolve and perform."
+        },
+        {
+            id: 4,
+            question: "How long does a typical design project take?",
+            answer: "Most projects range from 4 to 12 weeks, depending on the scope and complexity. We emphasize quality and thoroughness, while maintaining an agile pace to meet your business timelines."
+        },
+        {
+            id: 5,
+            question: "Will you help with the actual development of the design?",
+            answer: "Yes, we have a dedicated development team specializing in React, Next.js, and Webflow, ensuring your designs are implemented with pixel-perfect precision and high performance."
+        }
+    ];
 
     useEffect(() => {
         const handleScroll = () => {
@@ -801,7 +837,469 @@ function App() {
                 </div>
             </section>
 
-            {/* Footer Section */}
+            {/* Pricing Plans Section */}
+            <section className="pricing-plans-section">
+                <div className="pricing-container">
+                    <span className="pricing-badge">Pricing plans</span>
+                    <h2 className="pricing-title">
+                        <span className="elegant-serif">Unbeatable</span> Value <br />
+                        Unmatched <span className="elegant-serif">Quality</span>
+                    </h2>
+
+                    <div className="pricing-grid">
+                        {/* Card 1 */}
+                        <div className="pricing-card">
+                            <div className="price-top">
+                                <h3 className="plan-price">$1,800</h3>
+                                <p className="plan-subtitle">Ideal for Startup Owners, MVP Builders</p>
+                                <h4 className="plan-name">Website Design</h4>
+                            </div>
+                            <ul className="plan-features">
+                                <li>
+                                    <span className="check-icon">✓</span> Design Style Guide
+                                </li>
+                                <li>
+                                    <span className="check-icon">✓</span> Responsive across all devices
+                                </li>
+                                <li>
+                                    <span className="check-icon">✓</span> Unlimited Revisions
+                                </li>
+                                <li>
+                                    <span className="check-icon">✓</span> Developer Handoff
+                                </li>
+                            </ul>
+                            <button className="pricing-cta">
+                                Explore More <span className="cta-arrow-right">→</span>
+                            </button>
+                        </div>
+
+                        {/* Card 2 - Highlighted */}
+                        <div className="pricing-card highlighted">
+                            <div className="price-top">
+                                <h3 className="plan-price">$3,500</h3>
+                                <p className="plan-subtitle">For SaaS & fast MVP launches.</p>
+                                <h4 className="plan-name">Web/Mobile App Design</h4>
+                            </div>
+                            <ul className="plan-features">
+                                <li>
+                                    <span className="check-icon">✓</span> UX Research
+                                </li>
+                                <li>
+                                    <span className="check-icon">✓</span> Design System with token
+                                </li>
+                                <li>
+                                    <span className="check-icon">✓</span> Unlimited Revisions
+                                </li>
+                                <li>
+                                    <span className="check-icon">✓</span> Developer handoff
+                                </li>
+                                <li>
+                                    <span className="check-icon">✓</span> Transparent communication
+                                </li>
+                                <li>
+                                    <span className="check-icon">✓</span> Responsive across all devices
+                                </li>
+                            </ul>
+                            <button className="pricing-cta pink">
+                                Explore More <span className="cta-arrow-right">→</span>
+                            </button>
+                        </div>
+
+                        {/* Card 3 */}
+                        <div className="pricing-card">
+                            <div className="price-top">
+                                <h3 className="plan-price">$3,800+</h3>
+                                <p className="plan-subtitle">Ideal for Startup or MVP</p>
+                                <h4 className="plan-name">Monthly Subscription</h4>
+                            </div>
+                            <ul className="plan-features">
+                                <li>
+                                    <span className="check-icon">✓</span> Monthly dedicated designers
+                                </li>
+                                <li>
+                                    <span className="check-icon">✓</span> Adhoc design support
+                                </li>
+                                <li>
+                                    <span className="check-icon">✓</span> Right designer for right product
+                                </li>
+                                <li>
+                                    <span className="check-icon">✓</span> Transparent communication
+                                </li>
+                            </ul>
+                            <button className="pricing-cta">
+                                Explore More <span className="cta-arrow-right">→</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Openings Section */}
+            <section className="openings-section">
+                <div className="openings-container">
+                    <span className="openings-badge">Openings</span>
+                    <h2 className="openings-title">
+                        Be a <span className="elegant-serif">Monk!</span> Like us
+                    </h2>
+
+                    <div className="job-cards-container">
+                        {/* Job Card 1 */}
+                        <div className="job-card">
+                            <div className="job-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                    <path d="M18 8a3 3 0 0 0-3-3H5a3 3 0 0 0-3 3v8a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V8Z" />
+                                    <path d="M22 12h-4" />
+                                    <path d="M18 16h-4" />
+                                    <path d="M18 8h-4" />
+                                </svg>
+                            </div>
+                            <div className="job-content">
+                                <h3 className="job-title">Mobile App UI Designer</h3>
+                                <p className="job-desc">
+                                    We're looking for a talented UI Designer (Mobile App) to join our R&D team to drive standout projects and shape aesthetic solutions at Design Monks. If you love to design nice, attractive UI, visuals, mobile app interfaces - we'd love to hear from...
+                                </p>
+                                <div className="job-tags">
+                                    <span className="job-tag">UPTO BDT 40k</span>
+                                    <span className="job-tag">1 Vacancy</span>
+                                    <span className="job-tag">Full Time</span>
+                                    <span className="job-tag">Remote</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Job Card 2 */}
+                        <div className="job-card">
+                            <div className="job-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                    <path d="M18 8a3 3 0 0 0-3-3H5a3 3 0 0 0-3 3v8a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V8Z" />
+                                    <path d="M22 12h-4" />
+                                    <path d="M18 16h-4" />
+                                    <path d="M18 8h-4" />
+                                </svg>
+                            </div>
+                            <div className="job-content">
+                                <h3 className="job-title">Senior Web Designer</h3>
+                                <p className="job-desc">
+                                    We're looking for a Senior Web Designer to join Design Monks and create high-quality landing pages and modern websites. If you love designing clean, beautiful, and conversion-focused web experiences and enjoy turning ideas into responsive...
+                                </p>
+                                <div className="job-tags">
+                                    <span className="job-tag">UPTO BDT 60K</span>
+                                    <span className="job-tag">1 Vacancy</span>
+                                    <span className="job-tag">Full Time</span>
+                                    <span className="job-tag">Remote</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Referral Section */}
+            <section className="referral-section">
+                <div className="referral-container">
+                    <span className="referral-badge">Referral From People</span>
+                    <h2 className="referral-title">
+                        Trusted by People <br />
+                        <span className="elegant-serif">Chosen By Brands</span>
+                    </h2>
+
+                </div>
+            </section>
+            {/* Scrolling Referrals Section */}
+            <section className="scrolling-referrals-section">
+                <div className="scrolling-container">
+                    {/* Row 1: Right to Left */}
+                    <div className="marquee-wrapper">
+                        <div className="marquee-track track-left">
+                            {[client1, client2, client3, client4, client1, client2, client3, client4].map((img, i) => (
+                                <div className="scrolling-card" key={`r1-${i}`}>
+                                    <p className="scrolling-text">
+                                        "Working with Design Monks was a great experience. They were responsible, communicative, and delivered excellent design work. Their team really understood our vision and translated it into a product that exceeded our expectations in every way possible."
+                                    </p>
+                                    <div className="scrolling-author">
+                                        <img src={img} alt="Client" className="author-img" />
+                                        <div className="author-info">
+                                            <span className="author-name">{i % 4 === 0 ? "Sofia Gouveia" : i % 4 === 1 ? "Austin" : i % 4 === 2 ? "Moshiur Rahman" : "Jahnobi"}</span>
+                                            <span className="author-role">{i % 4 === 0 ? "Marketing Manager @ Voc AI" : "CEO @ TechFlow"}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+
+                    {/* Row 2: Left to Right */}
+                    <div className="marquee-wrapper">
+                        <div className="marquee-track track-right">
+                            {[client5, client6, client7, client8, client5, client6, client7, client8].map((img, i) => (
+                                <div className="scrolling-card" key={`r2-${i}`}>
+                                    <p className="scrolling-text">
+                                        "Design Monks is a professional, reliable partner for end-to-end product builds. From clean, modern designs to seamless systems, they handled everything with total professionalism. I couldn't be happier with our collaboration on this complex project."
+                                    </p>
+                                    <div className="scrolling-author">
+                                        <img src={img} alt="Client" className="author-img" />
+                                        <div className="author-info">
+                                            <span className="author-name">{i % 4 === 0 ? "Dilicio" : i % 4 === 1 ? "Armen Avagyan" : i % 4 === 2 ? "Anika" : "Tanmee"}</span>
+                                            <span className="author-role">{i % 4 === 1 ? "CEO & Co Founder @ Fraus" : "Founder @ Coinpulse"}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+
+                    {/* Row 3: Right to Left */}
+                    <div className="marquee-wrapper">
+                        <div className="marquee-track track-left">
+                            {[client3, client5, client1, client7, client3, client5, client1, client7].map((img, i) => (
+                                <div className="scrolling-card" key={`r3-${i}`}>
+                                    <p className="scrolling-text">
+                                        "They translated our business goals into clean, aesthetic designs with total transparency. The team is patient, committed, and a highly recommended design partner for any company looking to elevate their digital presence significantly."
+                                    </p>
+                                    <div className="scrolling-author">
+                                        <img src={img} alt="Client" className="author-img" />
+                                        <div className="author-info">
+                                            <span className="author-name">{i % 4 === 0 ? "Moshiur" : i % 4 === 1 ? "Dilicio" : i % 4 === 2 ? "Sofia" : "Anika"}</span>
+                                            <span className="author-role">Product Lead @ Innovate</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            {/* FAQ Section */}
+            <section className="faq-section">
+                <div className="faq-container">
+                    <span className="faq-badge">Frequently Asked Questions</span>
+                    <h2 className="faq-title">
+                        Your Questions <br />
+                        <span className="elegant-serif">Answered!</span>
+                    </h2>
+
+                    <div className="faq-list">
+                        {faqs.map((faq, index) => (
+                            <div 
+                                key={faq.id} 
+                                className={`faq-item ${openFaq === index ? 'active' : ''}`}
+                                onClick={() => toggleFaq(index)}
+                            >
+                                <div className="faq-question">
+                                    <h3>{faq.question}</h3>
+                                    <div className="faq-icon-circle">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M6 9L12 15L18 9" stroke="#7D40FF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div className="faq-answer">
+                                    <p>{faq.answer}</p>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* Consultation/Contact Section */}
+            <section className="consultation-section">
+                <div className="consultation-container">
+                    <img src={cornerGradient} alt="Decorative Gradient" className="consultation-corner-img" />
+                    <div className="consultation-grid">
+                        {/* Left Side: Text and Profile */}
+                        <div className="consultation-info">
+                            <div className="consultation-badge">
+                                <span className="dot"></span>
+                                Claim a $799 Consultation, on Us!
+                            </div>
+                            <h2 className="consultation-title">
+                                Enhance Your Brand <br />
+                                <span className="elegant-serif">Potential At No Cost!</span>
+                            </h2>
+                            <ul className="consultation-features">
+                                <li>
+                                    <span className="check-icon">
+                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                                            <polyline points="20 6 9 17 4 12"></polyline>
+                                        </svg>
+                                    </span>
+                                    Expect a response from us within 24 hours
+                                </li>
+                                <li>
+                                    <span className="check-icon">
+                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                                            <polyline points="20 6 9 17 4 12"></polyline>
+                                        </svg>
+                                    </span>
+                                    We're happy to sign an NDA upon request.
+                                </li>
+                                <li>
+                                    <span className="check-icon">
+                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                                            <polyline points="20 6 9 17 4 12"></polyline>
+                                        </svg>
+                                    </span>
+                                    Get access to a team of dedicated product specialists.
+                                </li>
+                            </ul>
+
+                            <div className="consultant-card">
+                                <div className="consultant-photo-wrapper">
+                                    <img src={client2} alt="Abdullah Al Noman" />
+                                </div>
+                                    <div className="consultant-details">
+                                        <h4 className="consultant-name">Abdullah Al Noman</h4>
+                                        <p className="consultant-role">COO & Co-founder</p>
+                                        <div className="consultant-phone">
+                                            <span className="phone-icon">
+                                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.414 0 .018 5.39.015 12.03c0 2.123.551 4.197 1.595 6.06L0 24l6.105-1.602a11.834 11.834 0 005.937 1.597h.005c6.637 0 12.032-5.391 12.035-12.031a11.764 11.764 0 00-3.517-8.403z" fill="white"/>
+                                                </svg>
+                                            </span>
+                                            +1 (716) 503-6335
+                                        </div>
+                                        <a href="#" className="book-call-link">Book a Call Directly</a>
+                                    </div>
+                            </div>
+                        </div>
+
+                        {/* Right Side: Form */}
+                        <div className="consultation-form-wrapper">
+                            <form className="consultation-form">
+                                <div className="form-group">
+                                    <label>Full Name</label>
+                                    <input type="text" placeholder="John Doe" />
+                                </div>
+                                <div className="form-row">
+                                    <div className="form-group">
+                                        <label>Your Email</label>
+                                        <input type="email" placeholder="yourmail@gmail.com" />
+                                    </div>
+                                    <div className="form-group">
+                                        <label>Whatsapp Number</label>
+                                        <input type="text" placeholder="1123 1234567" />
+                                    </div>
+                                </div>
+                                <div className="form-group">
+                                    <label>Project Budget</label>
+                                    <div className="budget-options">
+                                        {["Less than $5K", "$5K - $10K", "$10K - $20K", "$20K - $50K", "More than $50K"].map((budget) => (
+                                            <button 
+                                                key={budget} 
+                                                type="button" 
+                                                className={`budget-btn ${budget === selectedBudget ? 'active' : ''}`}
+                                                onClick={() => setSelectedBudget(budget)}
+                                            >
+                                                {budget}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                                <div className="form-group">
+                                    <label>Project Details</label>
+                                    <textarea placeholder="I want to redesign my website.."></textarea>
+                                </div>
+                                <button type="submit" className="connect-submit-btn">
+                                    <span>Let's Connect</span>
+                                    <span className="rocket-icon">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                                            <polyline points="12 5 19 12 12 19"></polyline>
+                                        </svg>
+                                    </span>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Trust Banner Section */}
+            <section className="trust-banner-section">
+                <div className="trust-banner-container">
+                    <div className="trust-pill">
+                        <div className="trust-pill-avatars">
+                            <img src={fortyPlus} alt="40+ Trusted" />
+                        </div>
+                        <div className="trust-marquee-wrapper">
+                            <div className="trust-marquee-content">
+                                <div className="trust-pill-text">
+                                    Secure Your <span className="elegant-serif">Brand's Future</span> Today. 
+                                    Why Risk It With The <span className="elegant-serif">Wrong Partner?</span> 
+                                    Get 100% Value And Guarantee —&nbsp;
+                                </div>
+                                <div className="trust-pill-text">
+                                    Secure Your <span className="elegant-serif">Brand's Future</span> Today. 
+                                    Why Risk It With The <span className="elegant-serif">Wrong Partner?</span> 
+                                    Get 100% Value And Guarantee —&nbsp;
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Pre-Footer Newsletter Section */}
+            <section className="pre-footer-section">
+                <div className="pre-footer-container">
+                    <p className="pre-footer-text">
+                        Say goodbye to outdated enterprise software and welcome the smoother one. 
+                        We lead you from design to product innovation to shape your path from idea to success
+                    </p>
+
+                    <div className="social-links-row">
+                        <a href="#" className="social-box dribbble">
+                            <span className="tooltip">Dribbble</span>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M8.56 2.75c4.37 6.03 6.02 9.42 8.03 17.72m2.54-15.38c-3.72 4.35-8.94 5.66-16.88 5.85m19.5 1.9c-3.5-.93-6.63-.82-8.94 0-2.58.92-5.01 2.86-7.44 6.32"></path></svg>
+                        </a>
+                        <a href="#" className="social-box behance">
+                            <span className="tooltip">Behance</span>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M22 7.15c0-1.8-1.2-1.93-2.1-1.93h-1.8v1.8h1.8v.02c.74 0 .74.79.74.83v2.53H14.12V3.74h2.52v-.02c0-.74.79-.74.83-.74h3.6V.34h-3.6c-1.8 0-3.34 1.54-3.34 3.34V10.4h-3.23V7.17c0-1.8-1.2-1.93-2.1-1.93H7.01v1.8h1.79v.02c.74 0 .74.79.74.83v2.53H2.88V7.17c0-1.8-1.2-1.93-2.1-1.93H0v16.92h22V7.15zM2.88 20.61V12.1h6.66v8.51H2.88zm11.24 0V12.1h6.66v8.51h-6.66z"></path></svg>
+                        </a>
+                        <a href="#" className="social-box instagram">
+                            <span className="tooltip">Instagram</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.486.275 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z" />
+                            </svg>
+                        </a>
+                        <a href="#" className="social-box linkedin">
+                            <span className="tooltip">LinkedIn</span>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                        </a>
+                        <a href="#" className="social-box facebook">
+                            <span className="tooltip">Facebook</span>
+                            <svg viewBox="0 0 320 512" width="16" height="20" fill="currentColor"><path d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z" /></svg>
+                        </a>
+                        <a href="#" className="social-box twitter">
+                            <span className="tooltip">Twitter</span>
+                            <svg width="20" height="20" fill="currentColor" viewBox="0 0 48 48"><path d="M42,12.429c-1.323,0.586-2.746,0.977-4.247,1.162c1.526-0.906,2.7-2.351,3.251-4.058c-1.428,0.837-3.01,1.452-4.693,1.776C34.967,9.884,33.05,9,30.926,9c-4.08,0-7.387,3.278-7.387,7.32c0,0.572,0.067,1.129,0.193,1.67c-6.138-0.308-11.582-3.226-15.224-7.654c-0.64,1.082-1,2.349-1,3.686c0,2.541,1.301,4.778,3.285,6.096c-1.211-0.037-2.351-0.374-3.349-0.914c0,0.022,0,0.055,0,0.086c0,3.551,2.547,6.508,5.923,7.181c-0.617,0.169-1.269,0.263-1.941,0.263c-0.477,0-0.942-0.054-1.392-0.135c0.94,2.902,3.667,5.023,6.898,5.086c-2.528,1.96-5.712,3.134-9.174,3.134c-0.598,0-1.183-0.034-1.761-0.104C9.268,36.786,13.152,38,17.321,38c13.585,0,21.017-11.156,21.017-20.834c0-0.317-0.01-0.633-0.025-0.945C39.763,15.197,41.013,13.905,42,12.429" /></svg>
+                        </a>
+                        <a href="#" className="social-box telegram">
+                            <span className="tooltip">Telegram</span>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                        </a>
+                    </div>
+
+                    <div className="subscribe-form-container">
+                        <div className="subscribe-input-wrapper">
+                            <span className="mail-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#999" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                            </span>
+                            <input type="email" placeholder="Your email here" />
+                        </div>
+                        <button className="subscribe-submit-btn">
+                            Subscribe
+                            <span className="arrow-icon">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
 
             <footer className="main-footer">
                 <div className="footer-container">
