@@ -59,7 +59,7 @@ const Footer = ({ footerImg }) => {
                         <a href="#">Terms & Conditions</a>
                     </div>
                     <div className="footer-bottom-center">
-                        <p>© 2026, Design Monks, All Rights Reserved.</p>
+                        <p>© 2026, Garuda, All Rights Reserved. Power by <a href="https://pnscode.com" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'underline' }}>Raju</a></p>
                     </div>
                     <div className="footer-bottom-right">
                         <a href="#">Privacy Policy</a>

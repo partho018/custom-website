@@ -19,7 +19,7 @@ const Openings = () => {
                         <div className="job-content">
                             <h3 className="job-title">Mobile App UI Designer</h3>
                             <p className="job-desc">
-                                We're looking for a talented UI Designer (Mobile App) to join our R&D team to drive standout projects and shape aesthetic solutions at Design Monks. If you love to design nice, attractive UI, visuals, mobile app interfaces - we'd love to hear from...
+                                We're looking for a talented UI Designer (Mobile App) to join our R&D team to drive standout projects and shape aesthetic solutions at Garuda. If you love to design nice, attractive UI, visuals, mobile app interfaces - we'd love to hear from...
                             </p>
                             <div className="job-tags">
                                 <span className="job-tag">UPTO BDT 40k</span>
@@ -39,7 +39,7 @@ const Openings = () => {
                         <div className="job-content">
                             <h3 className="job-title">Senior Web Designer</h3>
                             <p className="job-desc">
-                                We're looking for a Senior Web Designer to join Design Monks and create high-quality landing pages and modern websites. If you love designing clean, beautiful, and conversion-focused web experiences and enjoy turning ideas into responsive...
+                                We're looking for a Senior Web Designer to join Garuda and create high-quality landing pages and modern websites. If you love designing clean, beautiful, and conversion-focused web experiences and enjoy turning ideas into responsive...
                             </p>
                             <div className="job-tags">
                                 <span className="job-tag">UPTO BDT 60K</span>

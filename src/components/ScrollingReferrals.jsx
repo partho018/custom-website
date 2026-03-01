@@ -16,7 +16,7 @@ const ScrollingReferrals = ({ client1, client2, client3, client4, client5, clien
                         {[client1, client2, client3, client4, client1, client2, client3, client4].map((img, i) => (
                             <div className="scrolling-card" key={`r1-${i}`}>
                                 <p className="scrolling-text">
-                                    "Working with Design Monks was a great experience. They were responsible, communicative, and delivered excellent design work. Their team really understood our vision and translated it into a product that exceeded our expectations in every way possible."
+                                    "Working with Garuda was a great experience. They were responsible, communicative, and delivered excellent design work. Their team really understood our vision and translated it into a product that exceeded our expectations in every way possible."
                                 </p>
                                 <div className="scrolling-author">
                                     <img src={img} alt="Client" className="author-img" loading="lazy" decoding="async" />
@@ -35,7 +35,7 @@ const ScrollingReferrals = ({ client1, client2, client3, client4, client5, clien
                         {[client5, client6, client7, client8, client5, client6, client7, client8].map((img, i) => (
                             <div className="scrolling-card" key={`r2-${i}`}>
                                 <p className="scrolling-text">
-                                    "Design Monks is a professional, reliable partner for end-to-end product builds. From clean, modern designs to seamless systems, they handled everything with total professionalism. I couldn't be happier with our collaboration on this complex project."
+                                    "Garuda is a professional, reliable partner for end-to-end product builds. From clean, modern designs to seamless systems, they handled everything with total professionalism. I couldn't be happier with our collaboration on this complex project."
                                 </p>
                                 <div className="scrolling-author">
                                     <img src={img} alt="Client" className="author-img" loading="lazy" decoding="async" />

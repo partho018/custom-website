@@ -160,7 +160,7 @@ function App() {
         {
             name: "Sofia Gouveia",
             role: "Marketing Director @ TechFlow",
-            testimonial: "Design Monks completely transformed our brand identity. Their vision was exactly what we needed.",
+            testimonial: "Garuda completely transformed our brand identity. Their vision was exactly what we needed.",
             image: client1,
             brand: "TechFlow",
             cardBg: "#A8C69F"
@@ -200,7 +200,7 @@ function App() {
         {
             name: "Armen Avagyan",
             role: "CEO @ Fraus",
-            testimonial: "Design Monks brought a perspective we hadn't considered. It was a game changer.",
+            testimonial: "Garuda brought a perspective we hadn't considered. It was a game changer.",
             image: client6,
             brand: "Fraus",
             cardBg: "#E2A36F"
@@ -254,7 +254,7 @@ function App() {
     return (
         <div className="app-container">
             <header className="site-header">
-                <h2 className="site-logo-text">designmonks</h2>
+                <h2 className="site-logo-text">Garuda</h2>
             </header>
 
             <Hero
