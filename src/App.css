@@ -773,12 +773,14 @@
     height: 332.859px;
     width: 498px;
     min-height: auto;
-    max-width: none; /* Allow it to be slightly wider if needed */
+    max-width: none;
+    /* Allow it to be slightly wider if needed */
     min-width: auto;
     object-fit: contain;
     display: block;
     transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-    transform: translateX(20px); /* Shift further to the right */
+    transform: translateX(20px);
+    /* Shift further to the right */
 }
 
 /* Mobile Responsive Adjustments */
@@ -1076,8 +1078,6 @@
     }
 }
 
-
-
 /* Impact Section */
 .impact-section {
     background-color: #0A0A0A;
@@ -1362,7 +1362,7 @@
     font-weight: 700;
     font-size: 48px;
     line-height: 58px;
-    color:#000000;
+    color: #000000;
 }
 
 .why-us-subtitle {
@@ -1381,7 +1381,7 @@
         font-size: 42px;
         letter-spacing: -1px;
     }
-    
+
     .why-us-subtitle br {
         display: none;
     }
@@ -1482,12 +1482,14 @@
 .client-carousel-track {
     display: flex;
     width: fit-content;
-    padding-left: calc((100% - 1168px) / 2 + 25px); /* Calculate margin to align with 1168px container + shift for card padding */
+    padding-left: calc((100% - 1168px) / 2 + 25px);
+    /* Calculate margin to align with 1168px container + shift for card padding */
 }
 
 @media (max-width: 1168px) {
     .client-carousel-track {
-        padding-left: 25px; /* Align with 40px text padding - 15px card padding */
+        padding-left: 25px;
+        /* Align with 40px text padding - 15px card padding */
     }
 }
 
@@ -1654,7 +1656,8 @@
 
 @media (max-width: 768px) {
     .client-carousel-track {
-        padding-left: 5px; /* (20px page padding - 15px card padding) */
+        padding-left: 5px;
+        /* (20px page padding - 15px card padding) */
     }
 
     .client-card {
@@ -1737,6 +1740,8 @@
     display: flex;
     flex-direction: column;
     gap: 120px;
+    position: relative;
+    padding-bottom: 0;
 }
 
 .wwd-service-row {
@@ -1745,17 +1750,6 @@
     align-items: flex-start;
     position: relative;
     gap: 40px;
-}
-
-/* Sticky curtain moved to services container to avoid covering header */
-.wwd-services-container {
-    max-width: 1168px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 120px;
-    position: relative;
-    padding-bottom: 0px;
 }
 
 /* Top black curtain — text disappears here when scrolling up */
@@ -1820,30 +1814,20 @@
     margin-bottom: 24px;
 }
 
-
-
 .service-title .elegant-serif {
     font-family: 'Playfair Display', serif;
     font-size: 40px;
-    /* From image spec: 40px */
     line-height: 48px;
-    /* From image spec: 48px */
     font-weight: 700;
     font-style: italic;
 }
 
-
 .service-desc {
     font-family: 'Outfit', sans-serif;
-    /* From image spec */
     font-size: 16px;
-    /* From image spec: 16px */
     line-height: 24px;
-    /* From image spec: 24px */
     font-weight: 400;
-    /* From image spec: 400 */
     color: rgb(212, 212, 212);
-    /* Color from spec: rgb(212, 212, 212) */
     margin-bottom: 32px;
     max-width: 330px;
 }
@@ -1854,10 +1838,8 @@
     font-size: 16px;
     line-height: 24px;
     color: rgb(125, 64, 255);
-    /* Color from spec: rgb(125, 64, 255) */
     text-decoration: none;
     font-weight: 700;
-    /* From image spec: 700 */
     display: flex;
     align-items: center;
     gap: 8px;
@@ -2275,8 +2257,10 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between; /* Push button to bottom area */
-    min-height: 602px; /* Ensure card is at least this high */
+    justify-content: space-between;
+    /* Push button to bottom area */
+    min-height: 602px;
+    /* Ensure card is at least this high */
     height: auto;
     width: 366px;
     box-sizing: border-box;
@@ -2318,7 +2302,8 @@
     border-radius: 24px;
     padding: 72px 32px 0 32px;
     z-index: 20;
-    min-height: 701.391px; /* Maintain design height */
+    min-height: 701.391px;
+    /* Maintain design height */
     height: auto;
     width: 384px;
     margin: 2px 2px 2px 2px;
@@ -2333,7 +2318,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between; /* Spacing for highlighted card too */
+    justify-content: space-between;
+    /* Spacing for highlighted card too */
     position: relative;
     overflow: hidden;
 }
@@ -2403,9 +2389,11 @@
 
 .plan-divider {
     height: 1px;
-    width: calc(100% + 64px); /* Make it full width of card considering padding */
+    width: calc(100% + 64px);
+    /* Make it full width of card considering padding */
     margin-left: -32px;
-    background: #1F113D; /* Much darker purple divider line */
+    background: #1F113D;
+    /* Much darker purple divider line */
     margin-top: 24px;
     margin-bottom: 0px;
 }
@@ -2418,7 +2406,8 @@
     flex-grow: 1;
     background-color: transparent;
     z-index: 1;
-    border: none; /* Ensure no internal borders */
+    border: none;
+    /* Ensure no internal borders */
 }
 
 .plan-features li {
@@ -2444,7 +2433,8 @@
     min-width: 298px;
     height: 56px;
     min-height: 56px;
-    flex: none; /* Prevent button from stretching or shrinking */
+    flex: none;
+    /* Prevent button from stretching or shrinking */
     background-color: #7D40FF;
     color: #fff;
     border: none;
@@ -2459,12 +2449,14 @@
     gap: 10px;
     transition: all 0.3s ease;
     box-shadow: 0 8px 15px rgba(125, 64, 255, 0.3);
-    margin: 55px auto 40px auto; /* 55px top, 40px bottom as requested */
+    margin: 55px auto 40px auto;
+    /* 55px top, 40px bottom as requested */
     box-sizing: border-box;
 }
 
 /* Ensure other contents in the card stay left aligned */
-.price-top, .plan-features {
+.price-top,
+.plan-features {
     width: 100%;
     align-self: flex-start;
 }
@@ -2524,7 +2516,7 @@
 
 /* Openings Section */
 .openings-section {
-    background: 
+    background:
         radial-gradient(circle at -5% 40%, rgba(126, 61, 255, 0.15) 0%, transparent 50%),
         #0A0A0A;
     padding: 140px 40px;
@@ -2602,7 +2594,8 @@
     border-radius: 32px;
     padding: 44px 32px;
     display: flex;
-    align-items: center; /* Center vertically */
+    align-items: center;
+    /* Center vertically */
     gap: 30px;
     text-align: left;
     position: relative;
@@ -3542,15 +3535,11 @@
 
 .footer-col h3 {
     color: rgb(250, 250, 250);
-    /* From image spec */
     font-size: 18px;
-    /* From image spec: 18px */
     line-height: 27px;
-    /* From image spec: 27px */
     font-weight: 700;
     margin-bottom: 28px;
     font-family: 'Outfit', sans-serif;
-    /* From image spec */
     letter-spacing: -0.02em;
 }
 
@@ -3569,11 +3558,8 @@
     color: rgba(255, 255, 255, 0.5);
     text-decoration: none;
     font-size: 16px;
-    /* From spec: 16px */
     line-height: 24px;
-    /* From spec: 24px */
     font-weight: 400;
-    /* From spec: 400 */
     font-family: 'Outfit', sans-serif;
     transition: all 0.3s ease;
 }
@@ -3650,16 +3636,11 @@
 .footer-bottom-left a,
 .footer-bottom-right a {
     color: rgb(250, 250, 250);
-    /* From image spec */
     text-decoration: none;
     font-size: 16px;
-    /* From image spec: 16px */
     line-height: 24px;
-    /* From image spec: 24px */
     font-family: 'Outfit', sans-serif;
-    /* From image spec */
     font-weight: 400;
-    /* From image spec: 400 */
     transition: opacity 0.3s ease;
 }
 
@@ -3670,11 +3651,8 @@
 
 .footer-bottom-center p {
     color: rgb(250, 250, 250);
-    /* From image spec */
     font-size: 16px;
-    /* From image spec: 16px */
     line-height: 24px;
-    /* From image spec: 24px */
     font-family: 'Outfit', sans-serif;
     font-weight: 400;
     margin: 0;
@@ -4145,5 +4123,1082 @@
     .subscribe-submit-btn {
         width: 100%;
         justify-content: center;
+    }
+}
+
+/* ============================================================
+   COMPREHENSIVE RESPONSIVE SYSTEM
+   Breakpoints:
+   - xs: 320px–479px  (small phones)
+   - sm: 480px–767px  (large phones)
+   - md: 768px–1023px (tablets / portrait iPad)
+   - lg: 1024px–1279px (landscape tablet / small laptop)
+   - xl: 1280px–1439px (laptop / desktop)
+   - 2xl: 1440px+     (large desktop / 4K)
+   ============================================================ */
+
+/* ─── GLOBAL HELPERS ────────────────────────────────────────── */
+img {
+    max-width: 100%;
+}
+
+/* Prevent any element from overflowing horizontally */
+.app-container,
+.hero-section,
+.proven-success-section,
+.impact-section,
+.why-us-section,
+.what-we-do-section,
+.why-choose-us-section,
+.pricing-plans-section,
+.openings-section,
+.referral-section,
+.faq-section,
+.consultation-section,
+.pre-footer-section,
+.main-footer,
+.client-stories-section {
+    max-width: 100%;
+    overflow-x: clip;
+}
+
+/* ─── TABLET (max-width: 1024px) ─────────────────────────────── */
+@media (max-width: 1024px) {
+
+    /* Header */
+    .site-header {
+        height: 64px;
+        padding: 0 24px;
+    }
+
+    /* Hero */
+    .hero-section {
+        padding: 0 24px;
+        min-height: auto;
+        padding-bottom: 80px;
+    }
+
+    .hero-main-content {
+        margin-top: 40px;
+    }
+
+    /* Projects - fix fixed width */
+    .project-card {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .proven-success-section {
+        padding: 50px 24px;
+    }
+
+    .success-title,
+    .elegant-serif.dark {
+        font-size: 40px;
+        line-height: 1.2;
+    }
+
+    /* Trusted-by */
+    .trusted-by-section {
+        padding: 100px 0 80px;
+    }
+
+    /* Impact / AI */
+    .impact-section {
+        padding: 70px 24px;
+        border-radius: 30px;
+    }
+
+    .impact-title {
+        font-size: 40px;
+        line-height: 1.2;
+    }
+
+    /* AI grid — make it 2 columns */
+    .ai-features-grid {
+        gap: 24px;
+    }
+
+    .ai-card {
+        width: 100%;
+    }
+
+    /* Why Us */
+    .why-us-section {
+        padding: 80px 24px;
+    }
+
+    .why-us-title {
+        font-size: 40px;
+        line-height: 1.2;
+    }
+
+    /* What We Do */
+    .what-we-do-section {
+        padding: 80px 24px;
+    }
+
+    .wwd-title {
+        font-size: 40px;
+    }
+
+    .service-title {
+        font-size: 32px;
+    }
+
+    /* Why Choose Us */
+    .why-choose-us-section {
+        padding: 60px 24px 80px;
+    }
+
+    .why-choose-us-title {
+        font-size: 40px;
+        line-height: 1.2;
+        margin-bottom: 50px;
+    }
+
+    .why-choose-us-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .wcu-card:nth-child(1),
+    .wcu-card:nth-child(2) {
+        grid-column: span 1;
+    }
+
+    .wcu-card:nth-child(3),
+    .wcu-card:nth-child(4),
+    .wcu-card:nth-child(5) {
+        grid-column: span 1;
+        height: auto;
+        min-height: 280px;
+    }
+
+    /* Pricing */
+    .pricing-plans-section {
+        padding: 70px 24px;
+    }
+
+    .pricing-title {
+        font-size: 40px;
+    }
+
+    .pricing-card,
+    .pricing-card.highlighted {
+        width: 100%;
+    }
+
+    /* Openings */
+    .openings-section {
+        padding: 80px 24px;
+    }
+
+    .openings-title {
+        font-size: 40px;
+    }
+
+    .job-card {
+        flex-wrap: wrap;
+        height: auto;
+    }
+
+    /* Referral */
+    .referral-title {
+        font-size: 40px;
+    }
+
+    /* FAQ */
+    .faq-section {
+        padding: 60px 24px;
+    }
+
+    .faq-title {
+        font-size: 40px;
+    }
+
+    .faq-question h3 {
+        font-size: 20px;
+    }
+
+    /* Consultation */
+    .consultation-section {
+        padding: 50px 24px 0;
+    }
+
+    .consultation-container {
+        padding: 40px 24px;
+        border-radius: 24px;
+    }
+
+    .consultation-title {
+        font-size: 38px;
+    }
+
+    /* Navigation */
+    .floating-nav {
+        width: calc(100% - 32px);
+        bottom: 16px;
+    }
+
+    .nav-inner {
+        max-width: 100%;
+        gap: 6px;
+    }
+
+    /* Footer */
+    .main-footer {
+        padding: 70px 0 0;
+    }
+
+    .footer-container {
+        padding: 0 24px;
+        gap: 50px;
+    }
+
+    .footer-bottom-container {
+        padding: 0 24px;
+    }
+
+    /* Pre-Footer */
+    .pre-footer-section {
+        padding: 50px 24px;
+    }
+}
+
+/* ─── MOBILE LANDSCAPE + LARGE PHONES (max-width: 768px) ─────── */
+@media (max-width: 768px) {
+
+    /* Site header */
+    .site-header {
+        height: 60px;
+        padding: 0 16px;
+    }
+
+    /* Hero */
+    .hero-section {
+        padding: 20px 16px 80px;
+        min-height: auto;
+        align-items: center;
+        text-align: center;
+    }
+
+    .hero-main-content {
+        margin-top: 20px;
+        width: 100%;
+    }
+
+    .hero-title {
+        font-size: clamp(28px, 7vw, 50px);
+        line-height: 1.2;
+        letter-spacing: -1px;
+    }
+
+    .we-text,
+    .red-hat-text,
+    .elegant-serif {
+        font-size: clamp(28px, 7vw, 50px);
+    }
+
+    .title-icons {
+        height: clamp(24px, 5vw, 40px);
+    }
+
+    .country-chip-text {
+        font-size: 13px;
+        padding: 8px 16px;
+        height: auto;
+        text-align: center;
+        white-space: normal;
+        margin: 24px auto 0;
+        max-width: 90%;
+    }
+
+    .cta-wrapper {
+        margin-top: 30px;
+        margin-bottom: 60px;
+    }
+
+    /* Trusted By */
+    .trusted-by-section {
+        margin-top: -80px;
+        padding: 80px 0 60px;
+    }
+
+    /* Projects */
+    .proven-success-section {
+        padding: 40px 16px;
+        border-radius: 20px 20px 0 0;
+    }
+
+    .success-title,
+    .elegant-serif.dark {
+        font-size: 28px;
+        line-height: 1.2;
+    }
+
+    .projects-grid {
+        margin-top: 30px;
+        gap: 20px;
+    }
+
+    .project-card {
+        width: 100%;
+        max-width: 100%;
+        flex-direction: column;
+        height: auto;
+        padding: 24px 16px;
+        border-radius: 16px;
+        gap: 20px;
+        position: relative;
+        top: 0 !important;
+    }
+
+    .project-info {
+        width: 100%;
+        flex: 1;
+        order: 1;
+    }
+
+    .project-visual {
+        order: 2;
+        width: 100%;
+    }
+
+    .card-mockup-img {
+        width: 100%;
+        height: auto;
+        transform: none;
+        max-height: 220px;
+        object-fit: contain;
+    }
+
+    .project-title {
+        font-size: 22px;
+        line-height: 1.3;
+    }
+
+    .project-desc {
+        font-size: 14px;
+    }
+
+    .project-stats {
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+
+    .stat-value {
+        font-size: 20px;
+    }
+
+    .ceo-badge {
+        width: 100%;
+        padding: 10px 16px;
+    }
+
+    /* AI Impact */
+    .impact-section {
+        padding: 60px 16px;
+        border-radius: 24px;
+        margin-top: -24px;
+    }
+
+    .impact-title {
+        font-size: 28px;
+        line-height: 1.3;
+    }
+
+    .impact-subtitle {
+        font-size: 15px;
+    }
+
+    .impact-subtitle br {
+        display: none;
+    }
+
+    .ai-features-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+        margin-top: 30px;
+    }
+
+    .ai-card {
+        width: 100%;
+        height: auto;
+        min-height: 320px;
+        border-radius: 20px;
+    }
+
+    .ai-card-content {
+        padding: 24px 20px 8px;
+    }
+
+    .ai-card-content h3 {
+        font-size: 20px;
+    }
+
+    .ai-card-content p {
+        font-size: 15px;
+    }
+
+    .ai-center-logo-wrapper,
+    .connecting-lines-svg {
+        display: none;
+    }
+
+    /* Why Us */
+    .why-us-section {
+        padding: 60px 16px;
+        border-radius: 24px 24px 0 0;
+        margin-top: -24px;
+    }
+
+    .why-us-title {
+        font-size: 28px;
+        line-height: 1.3;
+        margin-bottom: 20px;
+    }
+
+    .why-us-subtitle {
+        font-size: 15px;
+    }
+
+    /* Client Stories */
+    .client-stories-section {
+        padding: 50px 0 120px;
+    }
+
+    .client-stories-content {
+        padding: 0 16px;
+    }
+
+    .client-stories-title {
+        font-size: 28px;
+        line-height: 1.3;
+    }
+
+    /* What We Do */
+    .what-we-do-section {
+        padding: 60px 16px;
+        border-radius: 24px 24px 0 0;
+        margin-top: -16px;
+    }
+
+    .wwd-title {
+        font-size: 28px;
+        line-height: 1.3;
+    }
+
+    .wwd-title .elegant-serif {
+        font-size: 28px;
+    }
+
+    .service-title {
+        font-size: 26px;
+        line-height: 1.3;
+    }
+
+    .service-title .elegant-serif {
+        font-size: 26px;
+    }
+
+    .service-desc {
+        font-size: 14px;
+        max-width: 100%;
+    }
+
+    .wwd-services-container {
+        gap: 60px;
+    }
+
+    .wwd-services-container::before,
+    .wwd-services-container::after {
+        display: none;
+    }
+
+    .wwd-text-col {
+        position: relative;
+        top: 0;
+        flex: 1;
+    }
+
+    /* Why Choose Us */
+    .why-choose-us-section {
+        padding: 60px 16px 80px;
+        border-radius: 20px 20px 0 0;
+        margin-top: -16px;
+    }
+
+    .why-choose-us-title {
+        font-size: 28px;
+        line-height: 1.3;
+        margin-bottom: 30px;
+    }
+
+    .why-choose-us-title .elegant-serif {
+        font-size: 28px;
+    }
+
+    .why-choose-us-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .wcu-card:nth-child(1),
+    .wcu-card:nth-child(2),
+    .wcu-card:nth-child(3),
+    .wcu-card:nth-child(4),
+    .wcu-card:nth-child(5) {
+        grid-column: span 1;
+        height: auto;
+        min-height: 220px;
+        padding: 28px 20px;
+    }
+
+    .wcu-card-title {
+        font-size: 22px;
+    }
+
+    .wcu-card-desc {
+        font-size: 15px;
+    }
+
+    /* Pricing */
+    .pricing-plans-section {
+        padding: 60px 16px;
+        border-radius: 20px 20px 0 0;
+        margin-top: -16px;
+    }
+
+    .pricing-title {
+        font-size: 28px;
+        line-height: 1.3;
+    }
+
+    .pricing-title .elegant-serif {
+        font-size: 28px;
+    }
+
+    .pricing-grid {
+        grid-template-columns: 1fr;
+        max-width: 100%;
+        gap: 20px;
+        margin-top: 40px;
+    }
+
+    .pricing-card,
+    .pricing-card.highlighted {
+        width: 100%;
+        min-height: auto;
+        padding: 40px 24px 0;
+    }
+
+    .pricing-cta {
+        width: 100%;
+        min-width: unset;
+    }
+
+    .plan-price {
+        font-size: 36px;
+    }
+
+    .plan-name {
+        font-size: 26px;
+    }
+
+    /* Openings */
+    .openings-section {
+        padding: 70px 16px;
+        border-radius: 20px 20px 0 0;
+        margin-top: -16px;
+    }
+
+    .openings-title {
+        font-size: 28px;
+        line-height: 1.3;
+    }
+
+    .openings-title .elegant-serif {
+        font-size: 28px;
+    }
+
+    .job-card {
+        padding: 24px 16px;
+        flex-direction: column;
+        gap: 16px;
+        height: auto;
+        border-radius: 20px;
+    }
+
+    .job-title {
+        font-size: 20px;
+        line-height: 1.3;
+    }
+
+    .job-desc {
+        font-size: 15px;
+    }
+
+    .job-tag {
+        font-size: 13px;
+        padding: 6px 12px;
+    }
+
+    /* Referral / Scrolling */
+    .referral-section {
+        padding: 70px 0;
+    }
+
+    .referral-container {
+        padding: 0 16px;
+        margin-bottom: 50px;
+    }
+
+    .referral-title {
+        font-size: 28px;
+        line-height: 1.3;
+    }
+
+    .referral-title .elegant-serif {
+        font-size: 28px;
+    }
+
+    .scrolling-card {
+        width: 280px;
+        height: auto;
+        padding: 20px;
+    }
+
+    .scrolling-text {
+        font-size: 15px;
+    }
+
+    /* FAQ */
+    .faq-section {
+        padding: 60px 16px;
+    }
+
+    .faq-title {
+        font-size: 28px;
+        line-height: 1.3;
+        margin-bottom: 40px;
+    }
+
+    .faq-title .elegant-serif {
+        font-size: 28px;
+    }
+
+    .faq-question {
+        padding: 20px 0;
+    }
+
+    .faq-question h3 {
+        font-size: 17px;
+        line-height: 1.4;
+        padding-right: 16px;
+    }
+
+    .faq-answer p {
+        font-size: 15px;
+    }
+
+    /* Consultation */
+    .consultation-section {
+        padding: 40px 16px 0;
+    }
+
+    .consultation-container {
+        padding: 32px 20px;
+        border-radius: 20px;
+        min-height: auto;
+    }
+
+    .consultation-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+
+    .consultation-title {
+        font-size: 28px;
+        line-height: 1.3;
+    }
+
+    .consultation-title .elegant-serif {
+        font-size: 28px;
+    }
+
+    .consultation-features li {
+        font-size: 15px;
+    }
+
+    .form-group label {
+        font-size: 16px;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        font-size: 15px;
+        padding: 12px;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .budget-options {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .connect-submit-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .consultation-corner-img {
+        width: 280px;
+        height: 280px;
+        top: -60px;
+        right: -60px;
+    }
+
+    /* Trust Banner */
+    .trust-pill {
+        height: auto;
+        padding: 16px 20px;
+        gap: 10px;
+        border-radius: 20px;
+    }
+
+    .trust-pill-text {
+        font-size: 14px;
+    }
+
+    .trust-pill-text .elegant-serif {
+        font-size: 16px !important;
+    }
+
+    /* Pre-Footer */
+    .pre-footer-section {
+        padding: 50px 16px;
+    }
+
+    .pre-footer-text {
+        font-size: 15px;
+    }
+
+    /* Footer */
+    .main-footer {
+        padding: 60px 0 0;
+    }
+
+    .footer-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px;
+        padding: 0 16px;
+    }
+
+    .footer-bottom-container {
+        flex-direction: column;
+        gap: 16px;
+        text-align: center;
+        padding: 0 16px;
+    }
+
+    /* Navigation */
+    .floating-nav {
+        width: calc(100% - 24px);
+        bottom: 12px;
+    }
+
+    .nav-inner {
+        padding: 8px 10px;
+        height: 60px;
+        gap: 4px;
+    }
+
+    .nav-link {
+        display: none;
+    }
+
+    .nav-cta {
+        padding: 0 16px;
+        height: 44px;
+        font-size: 13px;
+    }
+
+    /* Back to Top */
+    .back-to-top-btn {
+        bottom: 90px;
+        right: 12px;
+        padding: 8px 14px;
+        font-size: 12px;
+    }
+}
+
+/* ─── SMALL PHONES (max-width: 480px) ────────────────────────── */
+@media (max-width: 480px) {
+
+    /* Hero */
+    .hero-title {
+        font-size: clamp(24px, 8vw, 36px);
+        letter-spacing: -0.5px;
+    }
+
+    .we-text,
+    .red-hat-text,
+    .elegant-serif {
+        font-size: clamp(24px, 8vw, 36px);
+    }
+
+    .agency-sub {
+        font-size: 14px;
+    }
+
+    .country-chip-text {
+        font-size: 12px;
+        padding: 8px 12px;
+    }
+
+    .purple-btn {
+        width: 100%;
+        max-width: 200px;
+        height: 48px;
+        font-size: 14px;
+    }
+
+    /* Sections padding */
+    .proven-success-section,
+    .what-we-do-section,
+    .why-choose-us-section,
+    .pricing-plans-section,
+    .openings-section,
+    .faq-section {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    /* Project cards */
+    .project-card {
+        padding: 20px 12px;
+    }
+
+    .project-title {
+        font-size: 20px;
+    }
+
+    .project-category {
+        font-size: 16px;
+    }
+
+    .success-title,
+    .elegant-serif.dark,
+    .impact-title,
+    .why-us-title,
+    .wwd-title,
+    .why-choose-us-title,
+    .pricing-title,
+    .openings-title,
+    .referral-title,
+    .faq-title,
+    .client-stories-title,
+    .consultation-title {
+        font-size: 24px;
+    }
+
+    .success-title .elegant-serif,
+    .impact-title .elegant-serif,
+    .wwd-title .elegant-serif,
+    .why-choose-us-title .elegant-serif,
+    .pricing-title .elegant-serif,
+    .openings-title .elegant-serif,
+    .referral-title .elegant-serif,
+    .faq-title .elegant-serif,
+    .consultation-title .elegant-serif {
+        font-size: 24px;
+    }
+
+    /* AI cards */
+    .ai-card {
+        min-height: 280px;
+    }
+
+    /* Why Choose Us cards */
+    .wcu-card {
+        padding: 24px 16px;
+    }
+
+    .wcu-card-title {
+        font-size: 20px;
+    }
+
+    /* Pricing */
+    .plan-price {
+        font-size: 32px;
+    }
+
+    /* Job cards */
+    .job-title {
+        font-size: 18px;
+    }
+
+    .job-desc {
+        font-size: 14px;
+    }
+
+    /* FAQ */
+    .faq-question h3 {
+        font-size: 15px;
+    }
+
+    .faq-icon-circle {
+        width: 32px;
+        height: 32px;
+        flex-shrink: 0;
+    }
+
+    /* Consultation */
+    .consultation-container {
+        padding: 24px 16px;
+    }
+
+    .consultation-title {
+        font-size: 22px;
+    }
+
+    .budget-options {
+        grid-template-columns: 1fr;
+    }
+
+    /* Footer */
+    .footer-container {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+
+    .footer-col h3 {
+        font-size: 16px;
+        margin-bottom: 16px;
+    }
+
+    /* Scrolling cards */
+    .scrolling-card {
+        width: 260px;
+    }
+
+    /* Navigation */
+    .nav-cta {
+        font-size: 12px;
+        padding: 0 12px;
+        gap: 6px;
+    }
+
+    .cta-icon {
+        display: none;
+    }
+
+    /* Back to top */
+    .back-to-top-btn {
+        right: 8px;
+        font-size: 11px;
+        padding: 6px 12px;
+    }
+
+    /* Brand marquee */
+    .brand-logo {
+        font-size: 18px;
+    }
+}
+
+/* ─── VERY SMALL PHONES (max-width: 375px) ───────────────────── */
+@media (max-width: 375px) {
+
+    .hero-title {
+        font-size: 22px;
+    }
+
+    .we-text,
+    .red-hat-text,
+    .elegant-serif {
+        font-size: 22px;
+    }
+
+    .success-title,
+    .elegant-serif.dark,
+    .impact-title,
+    .why-us-title,
+    .wwd-title,
+    .why-choose-us-title,
+    .pricing-title,
+    .openings-title,
+    .referral-title,
+    .faq-title,
+    .client-stories-title,
+    .consultation-title {
+        font-size: 22px;
+    }
+
+    .project-title {
+        font-size: 18px;
+    }
+
+    .faq-question h3 {
+        font-size: 14px;
+    }
+
+    /* Nav on tiny screen */
+    .floating-nav {
+        width: calc(100% - 16px);
+    }
+
+    .nav-inner {
+        height: 54px;
+    }
+}
+
+/* ─── LARGE DESKTOP (min-width: 1440px) ──────────────────────── */
+@media (min-width: 1440px) {
+
+    .hero-main-content {
+        max-width: 1300px;
+    }
+
+    .hero-title {
+        font-size: 80px;
+        line-height: 96px;
+    }
+
+    .we-text,
+    .red-hat-text,
+    .elegant-serif {
+        font-size: 80px;
+    }
+
+    .success-title,
+    .elegant-serif.dark,
+    .impact-title,
+    .why-us-title,
+    .wwd-title,
+    .why-choose-us-title,
+    .pricing-title,
+    .openings-title,
+    .referral-title,
+    .faq-title,
+    .consultation-title,
+    .client-stories-title {
+        font-size: 54px;
+        line-height: 1.15;
+    }
+
+    .pricing-container,
+    .openings-container,
+    .faq-container,
+    .why-us-container,
+    .why-choose-us-container,
+    .referral-container {
+        max-width: 1300px;
+    }
+
+    .project-card {
+        max-width: 1300px;
     }
 }
