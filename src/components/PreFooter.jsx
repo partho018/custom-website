@@ -3,16 +3,6 @@ import React from 'react';
 const PreFooter = ({ fortyPlus }) => {
     return (
         <>
-            <section className="referral-section">
-                <div className="referral-container">
-                    <span className="referral-badge">Referral From People</span>
-                    <h2 className="referral-title">
-                        Trusted by People <br />
-                        <span className="elegant-serif">Chosen By Brands</span>
-                    </h2>
-                </div>
-            </section>
-
             <section className="trust-banner-section">
                 <div className="trust-banner-container">
                     <div className="trust-pill">
