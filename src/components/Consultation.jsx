@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { db } from '../firebase';
+import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 
 const Consultation = ({ cornerGradient, client2 }) => {
     const [selectedBudget, setSelectedBudget] = useState("");
@@ -28,7 +30,8 @@ const Consultation = ({ cornerGradient, client2 }) => {
         };
 
         try {
-            const response = await fetch("https://formsubmit.co/ajax/Parthosamadder00@gmail.com", {
+            // 1. Send Email via FormSubmit
+            const emailPromise = fetch("https://formsubmit.co/ajax/Parthosamadder00@gmail.com", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -37,7 +40,20 @@ const Consultation = ({ cornerGradient, client2 }) => {
                 body: JSON.stringify(dataToSend),
             });
 
-            if (response.ok) {
+            // 2. Save to Firebase Firestore for Dashboard
+            const firestorePromise = addDoc(collection(db, 'contact_submissions'), {
+                fullName: formData.fullName,
+                email: formData.email,
+                whatsapp: formData.whatsapp,
+                budget: selectedBudget,
+                details: formData.details,
+                active: true, // Can be used for marking as read/archived
+                createdAt: serverTimestamp()
+            });
+
+            const [emailResponse] = await Promise.all([emailPromise, firestorePromise]);
+
+            if (emailResponse.ok) {
                 setFormStatus({ submitting: false, success: true, error: null });
                 setFormData({ fullName: '', email: '', whatsapp: '', details: '' });
                 setSelectedBudget("");
@@ -45,6 +61,7 @@ const Consultation = ({ cornerGradient, client2 }) => {
                 setFormStatus({ submitting: false, success: false, error: "Submission failed. Please try again." });
             }
         } catch (err) {
+            console.error("Submission error:", err);
             setFormStatus({ submitting: false, success: false, error: "Something went wrong. Please try again." });
         }
     };

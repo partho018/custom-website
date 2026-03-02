@@ -23,6 +23,7 @@ import BackToTop from './components/BackToTop';
 import Loader from './components/Loader';
 import Login from './components/Login';
 import Dashboard from './components/Dashboard';
+import Blogs from './components/Blogs';
 
 // Asset Imports
 import logo from './assets/logo.svg';
@@ -269,6 +270,9 @@ function App() {
 
             {/* লগিন পেইজ — /dashboard/login */}
             <Route path="/dashboard/login" element={<Login />} />
+
+            {/* ব্লগ পেইজ — /blogs */}
+            <Route path="/blogs" element={<Blogs />} />
 
             {/* ড্যাশবোর্ড — /dashboard (protected) */}
             <Route

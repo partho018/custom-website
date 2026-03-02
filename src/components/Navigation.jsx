@@ -33,7 +33,7 @@ const Navigation = () => {
                     </button>
 
                     <a href="#pricing" className="nav-link">Pricing</a>
-                    <a href="#more" className="nav-link">More</a>
+                    <a href="/blogs" className="nav-link">Blog</a>
                 </div>
             </nav>
         </>
