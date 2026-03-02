@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 const Consultation = ({ cornerGradient, client2 }) => {
-    const [selectedBudget, setSelectedBudget] = useState("More than $50K");
+    const [selectedBudget, setSelectedBudget] = useState("");
     const [formStatus, setFormStatus] = useState({ submitting: false, success: false, error: null });
     const [formData, setFormData] = useState({
         fullName: '',
@@ -40,7 +40,7 @@ const Consultation = ({ cornerGradient, client2 }) => {
             if (response.ok) {
                 setFormStatus({ submitting: false, success: true, error: null });
                 setFormData({ fullName: '', email: '', whatsapp: '', details: '' });
-                setSelectedBudget("More than $50K");
+                setSelectedBudget("");
             } else {
                 setFormStatus({ submitting: false, success: false, error: "Submission failed. Please try again." });
             }
@@ -132,7 +132,7 @@ const Consultation = ({ cornerGradient, client2 }) => {
                                         <input
                                             type="text"
                                             name="fullName"
-                                            placeholder="John Doe"
+                                            placeholder="Enter Your Name"
                                             value={formData.fullName}
                                             onChange={handleInputChange}
                                             required

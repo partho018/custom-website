@@ -1,4 +1,5 @@
 import React from 'react';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import './App.css';
 
 // Component Imports
@@ -19,6 +20,9 @@ import PreFooter from './components/PreFooter';
 import Footer from './components/Footer';
 import Navigation from './components/Navigation';
 import BackToTop from './components/BackToTop';
+import Loader from './components/Loader';
+import Login from './components/Login';
+import Dashboard from './components/Dashboard';
 
 // Asset Imports
 import logo from './assets/logo.svg';
@@ -78,7 +82,17 @@ import starIcon from '../img/Why Choose Us/67bbf455f7d2b364987895ff_star-p-500.a
 import cornerGradient from '../img/68ba5e44ccb1468ce5b97221_96a931f11af1a2f6b37e251396d130df_6894f274513a65bb1abe220f_Gradient (1)-p-130x130q80.avif';
 import fortyPlus from '../img/40+.avif';
 
-function App() {
+// ProtectedRoute - redirects to login if not authenticated
+function ProtectedRoute({ children }) {
+    const isLoggedIn = sessionStorage.getItem('dashboard_auth');
+    if (!isLoggedIn) {
+        return <Navigate to="/dashboard/login" replace />;
+    }
+    return children;
+}
+
+// Main website page component
+function MainSite() {
     const services = [
         {
             title: "UI/UX Design",
@@ -157,102 +171,27 @@ function App() {
     ];
 
     const clientStories = [
-        {
-            name: "Sofia Gouveia",
-            role: "Marketing Director @ TechFlow",
-            testimonial: "Garuda completely transformed our brand identity. Their vision was exactly what we needed.",
-            image: client1,
-            brand: "TechFlow",
-            cardBg: "#A8C69F"
-        },
-        {
-            name: "Austin",
-            role: "Founder @ Spark",
-            testimonial: "The attention to detail and creative direction was phenomenal. Highly recommended.",
-            image: client2,
-            brand: "Spark",
-            cardBg: "#E2A36F"
-        },
-        {
-            name: "Moshiur Rahman",
-            role: "CEO @ PrimeStream",
-            testimonial: "Working with them was a seamless experience. They really understood our user base.",
-            image: client3,
-            brand: "PrimeStream",
-            cardBg: "#F2DC83"
-        },
-        {
-            name: "Jahnobi",
-            role: "Product Lead @ Nexa",
-            testimonial: "The team delivered above and beyond our expectations. A true design powerhouse.",
-            image: client4,
-            brand: "Nexa",
-            cardBg: "#D0EDF7"
-        },
-        {
-            name: "Dilicio",
-            role: "COO @ Foodies",
-            testimonial: "Our conversion rates spiked by 40% after the redesign. Simply amazing work.",
-            image: client5,
-            brand: "Foodies",
-            cardBg: "#A8C69F"
-        },
-        {
-            name: "Armen Avagyan",
-            role: "CEO @ Fraus",
-            testimonial: "Garuda brought a perspective we hadn't considered. It was a game changer.",
-            image: client6,
-            brand: "Fraus",
-            cardBg: "#E2A36F"
-        },
-        {
-            name: "Anika",
-            role: "Design Lead @ Aura",
-            testimonial: "The level of professionalism and craft they bring to the table is unmatched.",
-            image: client7,
-            brand: "Aura",
-            cardBg: "#F2DC83"
-        },
-        {
-            name: "Tanmee",
-            role: "CTO @ CloudSync",
-            testimonial: "Fast, reliable, and exceptionally talented. Best agency we've ever worked with.",
-            image: client8,
-            brand: "CloudSync",
-            cardBg: "#D0EDF7"
-        }
+        { name: "Sofia Gouveia", role: "Marketing Director @ TechFlow", testimonial: "Garuda completely transformed our brand identity. Their vision was exactly what we needed.", image: client1, brand: "TechFlow", cardBg: "#A8C69F" },
+        { name: "Austin", role: "Founder @ Spark", testimonial: "The attention to detail and creative direction was phenomenal. Highly recommended.", image: client2, brand: "Spark", cardBg: "#E2A36F" },
+        { name: "Moshiur Rahman", role: "CEO @ PrimeStream", testimonial: "Working with them was a seamless experience. They really understood our user base.", image: client3, brand: "PrimeStream", cardBg: "#F2DC83" },
+        { name: "Jahnobi", role: "Product Lead @ Nexa", testimonial: "The team delivered above and beyond our expectations. A true design powerhouse.", image: client4, brand: "Nexa", cardBg: "#D0EDF7" },
+        { name: "Dilicio", role: "COO @ Foodies", testimonial: "Our conversion rates spiked by 40% after the redesign. Simply amazing work.", image: client5, brand: "Foodies", cardBg: "#A8C69F" },
+        { name: "Armen Avagyan", role: "CEO @ Fraus", testimonial: "Garuda brought a perspective we hadn't considered. It was a game changer.", image: client6, brand: "Fraus", cardBg: "#E2A36F" },
+        { name: "Anika", role: "Design Lead @ Aura", testimonial: "The level of professionalism and craft they bring to the table is unmatched.", image: client7, brand: "Aura", cardBg: "#F2DC83" },
+        { name: "Tanmee", role: "CTO @ CloudSync", testimonial: "Fast, reliable, and exceptionally talented. Best agency we've ever worked with.", image: client8, brand: "CloudSync", cardBg: "#D0EDF7" }
     ];
 
     const faqs = [
-        {
-            id: 1,
-            question: "How do you approach a new design project?",
-            answer: "We start with deep discovery and strategy to understand your business goals, target audience, and market landscape. From there, we move to user journey mapping, wireframing, and finally high-fidelity UI design."
-        },
-        {
-            id: 2,
-            question: "What industries do you specialize in?",
-            answer: "While we have extensive experience in Fintech, Healthcare, and SaaS, our design-first methodology allows us to tackle complex problems in any industry, from Edtech to Cybersecurity."
-        },
-        {
-            id: 3,
-            question: "Do you offer post-launch support and optimization?",
-            answer: "Absolutely. We view our client relationships as long-term partnerships. We offer flexible maintenance and optimization retainers to ensure your product continues to evolve and perform."
-        },
-        {
-            id: 4,
-            question: "How long does a typical design project take?",
-            answer: "Most projects range from 4 to 12 weeks, depending on the scope and complexity. We emphasize quality and thoroughness, while maintaining an agile pace to meet your business timelines."
-        },
-        {
-            id: 5,
-            question: "Will you help with the actual development of the design?",
-            answer: "Yes, we have a dedicated development team specializing in React, Next.js, and Webflow, ensuring your designs are implemented with pixel-perfect precision and high performance."
-        }
+        { id: 1, question: "How do you approach a new design project?", answer: "We start with deep discovery and strategy to understand your business goals, target audience, and market landscape. From there, we move to user journey mapping, wireframing, and finally high-fidelity UI design." },
+        { id: 2, question: "What industries do you specialize in?", answer: "While we have extensive experience in Fintech, Healthcare, and SaaS, our design-first methodology allows us to tackle complex problems in any industry, from Edtech to Cybersecurity." },
+        { id: 3, question: "Do you offer post-launch support and optimization?", answer: "Absolutely. We view our client relationships as long-term partnerships. We offer flexible maintenance and optimization retainers to ensure your product continues to evolve and perform." },
+        { id: 4, question: "How long does a typical design project take?", answer: "Most projects range from 4 to 12 weeks, depending on the scope and complexity. We emphasize quality and thoroughness, while maintaining an agile pace to meet your business timelines." },
+        { id: 5, question: "Will you help with the actual development of the design?", answer: "Yes, we have a dedicated development team specializing in React, Next.js, and Webflow, ensuring your designs are implemented with pixel-perfect precision and high performance." }
     ];
 
     return (
         <div className="app-container">
+            <Loader />
             <header className="site-header">
                 <h2 className="site-logo-text">Garuda</h2>
             </header>
@@ -319,6 +258,31 @@ function App() {
 
             <BackToTop />
         </div>
+    );
+}
+
+function App() {
+    return (
+        <Routes>
+            {/* মূল ওয়েবসাইট */}
+            <Route path="/" element={<MainSite />} />
+
+            {/* লগিন পেইজ — /dashboard/login */}
+            <Route path="/dashboard/login" element={<Login />} />
+
+            {/* ড্যাশবোর্ড — /dashboard (protected) */}
+            <Route
+                path="/dashboard"
+                element={
+                    <ProtectedRoute>
+                        <Dashboard />
+                    </ProtectedRoute>
+                }
+            />
+
+            {/* অজানা রুট → মূল পেইজে রিডাইরেক্ট */}
+            <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
     );
 }
 
