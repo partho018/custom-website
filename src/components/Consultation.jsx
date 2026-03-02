@@ -41,14 +41,26 @@ const Consultation = ({ cornerGradient, client2 }) => {
             });
 
             // 2. Save to Firebase Firestore for Dashboard
-            const firestorePromise = addDoc(collection(db, 'contact_submissions'), {
-                fullName: formData.fullName,
-                email: formData.email,
-                whatsapp: formData.whatsapp,
-                budget: selectedBudget,
-                details: formData.details,
-                active: true, // Can be used for marking as read/archived
-                createdAt: serverTimestamp()
+            // Added simple timeout to prevent hanging if Firebase is not configured
+            const firestorePromise = new Promise(async (resolve, reject) => {
+                const timeoutId = setTimeout(() => resolve({ timeout: true }), 10000); // 10s timeout
+                try {
+                    await addDoc(collection(db, 'contact_submissions'), {
+                        fullName: formData.fullName,
+                        email: formData.email,
+                        whatsapp: formData.whatsapp,
+                        budget: selectedBudget,
+                        details: formData.details,
+                        active: true,
+                        createdAt: serverTimestamp()
+                    });
+                    clearTimeout(timeoutId);
+                    resolve({ success: true });
+                } catch (err) {
+                    clearTimeout(timeoutId);
+                    console.error("Firebase error (possibly unconfigured):", err);
+                    resolve({ error: err }); // Resolve anyway to not block the email flow
+                }
             });
 
             const [emailResponse] = await Promise.all([emailPromise, firestorePromise]);
@@ -57,8 +69,13 @@ const Consultation = ({ cornerGradient, client2 }) => {
                 setFormStatus({ submitting: false, success: true, error: null });
                 setFormData({ fullName: '', email: '', whatsapp: '', details: '' });
                 setSelectedBudget("");
+                
+                // Reset success message after 5 seconds
+                setTimeout(() => {
+                    setFormStatus(prev => ({ ...prev, success: false }));
+                }, 5000);
             } else {
-                setFormStatus({ submitting: false, success: false, error: "Submission failed. Please try again." });
+                setFormStatus({ submitting: false, success: false, error: "Submission failed (Email service). Please try again." });
             }
         } catch (err) {
             console.error("Submission error:", err);
@@ -129,95 +146,100 @@ const Consultation = ({ cornerGradient, client2 }) => {
 
                     <div className="consultation-form-wrapper">
                         <form className="consultation-form" onSubmit={handleFormSubmit}>
-                            {formStatus.success ? (
-                                <div className="form-success-message">
-                                    <h3 style={{ color: '#fff', marginBottom: '10px' }}>Thank you! 🎉</h3>
-                                    <p style={{ color: 'rgba(255,255,255,0.7)' }}>Your message has been sent successfully. We will get back to you within 24 hours.</p>
-                                    <button
-                                        type="button"
-                                        className="budget-btn active"
-                                        style={{ marginTop: '20px' }}
-                                        onClick={() => setFormStatus({ submitting: false, success: false, error: null })}
-                                    >
-                                        Send Another Message
-                                    </button>
+                            <div className="form-group">
+                                <label>Full Name</label>
+                                <input
+                                    type="text"
+                                    name="fullName"
+                                    placeholder="Enter Your Name"
+                                    value={formData.fullName}
+                                    onChange={handleInputChange}
+                                    required
+                                />
+                            </div>
+                            <div className="form-row">
+                                <div className="form-group">
+                                    <label>Your Email</label>
+                                    <input
+                                        type="email"
+                                        name="email"
+                                        placeholder="yourmail@gmail.com"
+                                        value={formData.email}
+                                        onChange={handleInputChange}
+                                        required
+                                    />
                                 </div>
-                            ) : (
-                                <>
-                                    <div className="form-group">
-                                        <label>Full Name</label>
-                                        <input
-                                            type="text"
-                                            name="fullName"
-                                            placeholder="Enter Your Name"
-                                            value={formData.fullName}
-                                            onChange={handleInputChange}
-                                            required
-                                        />
-                                    </div>
-                                    <div className="form-row">
-                                        <div className="form-group">
-                                            <label>Your Email</label>
-                                            <input
-                                                type="email"
-                                                name="email"
-                                                placeholder="yourmail@gmail.com"
-                                                value={formData.email}
-                                                onChange={handleInputChange}
-                                                required
-                                            />
-                                        </div>
-                                        <div className="form-group">
-                                            <label>Whatsapp Number</label>
-                                            <input
-                                                type="text"
-                                                name="whatsapp"
-                                                placeholder="1123 1234567"
-                                                value={formData.whatsapp}
-                                                onChange={handleInputChange}
-                                                required
-                                            />
-                                        </div>
-                                    </div>
-                                    <div className="form-group">
-                                        <label>Project Budget</label>
-                                        <div className="budget-options">
-                                            {["Less than $5K", "$5K - $10K", "$10K - $20K", "$20K - $50K", "More than $50K"].map((budget) => (
-                                                <button
-                                                    key={budget}
-                                                    type="button"
-                                                    className={`budget-btn ${budget === selectedBudget ? 'active' : ''}`}
-                                                    onClick={() => setSelectedBudget(budget)}
-                                                >
-                                                    {budget}
-                                                </button>
-                                            ))}
-                                        </div>
-                                    </div>
-                                    <div className="form-group">
-                                        <label>Project Details</label>
-                                        <textarea
-                                            name="details"
-                                            placeholder="I want to redesign my website.."
-                                            value={formData.details}
-                                            onChange={handleInputChange}
-                                            required
-                                        ></textarea>
-                                    </div>
-                                    {formStatus.error && <p style={{ color: '#ff4d4d', fontSize: '14px', marginBottom: '10px' }}>{formStatus.error}</p>}
-                                    <button type="submit" className="connect-submit-btn" disabled={formStatus.submitting}>
-                                        <span>{formStatus.submitting ? 'Sending...' : "Let's Connect"}</span>
-                                        {!formStatus.submitting && (
-                                            <span className="rocket-icon">
-                                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                                                    <line x1="5" y1="12" x2="19" y2="12"></line>
-                                                    <polyline points="12 5 19 12 12 19"></polyline>
-                                                </svg>
-                                            </span>
-                                        )}
-                                    </button>
-                                </>
+                                <div className="form-group">
+                                    <label>Whatsapp Number</label>
+                                    <input
+                                        type="text"
+                                        name="whatsapp"
+                                        placeholder="1123 1234567"
+                                        value={formData.whatsapp}
+                                        onChange={handleInputChange}
+                                        required
+                                    />
+                                </div>
+                            </div>
+                            <div className="form-group">
+                                <label>Project Budget</label>
+                                <div className="budget-options">
+                                    {["Less than $5K", "$5K - $10K", "$10K - $20K", "$20K - $50K", "More than $50K"].map((budget) => (
+                                        <button
+                                            key={budget}
+                                            type="button"
+                                            className={`budget-btn ${budget === selectedBudget ? 'active' : ''}`}
+                                            onClick={() => setSelectedBudget(budget)}
+                                        >
+                                            {budget}
+                                        </button>
+                                    ))}
+                                </div>
+                            </div>
+                            <div className="form-group">
+                                <label>Project Details</label>
+                                <textarea
+                                    name="details"
+                                    placeholder="I want to redesign my website.."
+                                    value={formData.details}
+                                    onChange={handleInputChange}
+                                    required
+                                ></textarea>
+                            </div>
+
+                            {formStatus.success && (
+                                <div className="form-success-toast" style={{
+                                    backgroundColor: 'rgba(74, 222, 128, 0.2)',
+                                    color: '#4ade80',
+                                    padding: '12px',
+                                    borderRadius: '8px',
+                                    marginBottom: '15px',
+                                    fontSize: '14px',
+                                    border: '1px solid rgba(74, 222, 128, 0.4)',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    gap: '10px'
+                                }}>
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                                        <polyline points="20 6 9 17 4 12"></polyline>
+                                    </svg>
+                                    <span>Thank you! Sent successfully.</span>
+                                </div>
                             )}
+
+                            {formStatus.error && <p style={{ color: '#ff4d4d', fontSize: '14px', marginBottom: '10px' }}>{formStatus.error}</p>}
+                            
+                            <button type="submit" className="connect-submit-btn" disabled={formStatus.submitting}>
+                                <span>{formStatus.submitting ? 'Sending...' : "Let's Connect"}</span>
+                                {!formStatus.submitting && (
+                                    <span className="rocket-icon">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                                            <polyline points="12 5 19 12 12 19"></polyline>
+                                        </svg>
+                                    </span>
+                                )}
+                            </button>
                         </form>
                     </div>
                 </div>
